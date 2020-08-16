@@ -1,0 +1,48 @@
+{
+  "objective": "Being given to understand that you are entertaining candidates for various jobs in your esteemed organization. I offer myself as one of the candidate for a suitable job and furnish the following Curriculum Vitae for favoring of your consideration and early orders.",
+  "profile": {
+    "name": "raghavendra",
+    "date_of_birth": "05-03-1988",
+    "gender": "male",
+    "father_name": "apparao mirashi",
+    "marital_status": "unmarried",
+    "languages": ["English", "Hindi", "marathi", "kannada"]
+  },
+  "address": {
+    "at": "mundwad",
+    "post": "kannigeri",
+    "city": "yellapur",
+    "district": "north kannada",
+    "state": "karnataka",
+    "pin_code": "5824333"
+  },
+  "contact": {
+    "cell": "545454545",
+    "email": "raghu@gmail.com"
+  },
+  "qualification": {
+    "qualification1": "Bachelor of Engineering in Computer Science1",
+    "qualification2": "Diploma in Computer Science"
+  },
+  "skills": {
+    "enable": true,
+    "description": [
+      "Computer networking and System Services",
+      "Windows and Linux Operating Systems"
+    ]
+  },
+  "experience": {
+    "enable": true,
+    "description": [
+      "1 year as Software Developer in Softebizz Technologies Pvt Ltd/Pune",
+      "3 Years as IT-Engineer in Premier Services/Goa"
+    ]
+  },
+  "certification": {
+    "enable": true,
+    "description": [
+      "Land Acquisition Certificate – Land acquired by state Govt. in Bommanalli pickup Dam"
+    ]
+  },
+  "declaration": "I hereby declare that the above mentioned particulars are true and genuine to the best of my knowledge and belief"
+}

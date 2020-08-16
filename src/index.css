@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@page {
+  size: A4;
+  margin: 2.5em;
+}
+#print-page {
+  display: none;
+}
+@media print {
+  html,
+  body,
+  body * {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  #print-page {
+    width: 21cm;
+    height: 29.7cm;
+    background-color: white;
+    box-shadow: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+  }
+  #print-page,
+  #print-page * {
+    page-break-inside: avoid;
+  }
+  #root,
+  #Header,
+  #Footer {
+    display: none !important;
+  }
+}
