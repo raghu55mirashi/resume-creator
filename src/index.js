@@ -17,11 +17,11 @@ toast.configure({
 })
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <PersistGate persistor={persistor}>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </PersistGate>,
   document.getElementById('root')
 );
-// <PersistGate persistor={persistor}>
-// <App />
-// </PersistGate>
+
