@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import photo from '../assets/images/me.JPG'
 
 const Objective = ({ objective }) => {
     return (
@@ -57,7 +56,7 @@ const Address = ({ address }) => {
         </div>
     )
 }
-const Contact = ({ contact }) => {
+const Contact = ({ contact, image }) => {
     return (
         <div className="flex">
             <div className="flex-1 text-left">
@@ -69,7 +68,7 @@ const Contact = ({ contact }) => {
             </div>
             <div className="flex-1 overflow-hidden">
                 <div className="flex justify-center">
-                    <img src={photo} alt="pic" className="h-40 w-40 rounded-full object-center" />
+                    <img src={image} alt="pic" id="photo" className="h-40 w-40 rounded-full object-center" />
                 </div>
             </div>
         </div>
@@ -165,11 +164,11 @@ const Declaration = () => {
 
 class Template1 extends React.Component {
     render() {
-        const { objective, profile, address, contact, qualification,
+        const { objective, profile, address, contact, qualification, image,
             skills, experience, certification, declaration } = this.props.resume
         return (
             <React.Fragment>
-                <Contact contact={contact} />
+                <Contact contact={contact} image={image} />
                 <Objective objective={objective} />
                 <ProfileAndAddress profile={profile} address={address} />
                 <Qualification qualification={qualification} />

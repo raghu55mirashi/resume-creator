@@ -7,6 +7,7 @@ import Qualification from './Tabs/Qualification'
 import Skills from './Tabs/Skills'
 import Experience from './Tabs/Experience'
 import Certification from './Tabs/Certification'
+import SetImage from './Tabs/SetImage'
 
 class LeftSidebar extends Component {
     state = {
@@ -35,6 +36,7 @@ class LeftSidebar extends Component {
                     <Skills show={this.state.show} toggle={this.toggle} />
                     <Experience show={this.state.show} toggle={this.toggle} />
                     <Certification show={this.state.show} toggle={this.toggle} />
+                    <SetImage show={this.state.show} toggle={this.toggle} />
                 </div>
             </div>
         )

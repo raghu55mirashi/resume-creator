@@ -5,7 +5,7 @@ import FormInput from '../../Shared/FormInput'
 import Header from '../../Shared/Header'
 import RemoveInputField from '../../Utils/RemoveInputField'
 import uuid from 'react-uuid'
-import Button from '../../Shared/Button'
+import Checkbox from '../../Shared/Checkbox'
 
 export default function SkillsExpCert(WrappedComponent, componentName, enable = false) {
     class WithTabs extends Component {
@@ -40,8 +40,18 @@ export default function SkillsExpCert(WrappedComponent, componentName, enable = 
                 alert('Need to keep atleast one field')
             }
         }
+        onEnable = (e, key) => {
+            const en = e.target.checked
+            this.setState({
+                [key]: { ...this.state[key], enable: en }
+            }, () => {
+                const value = this.state[key]
+                this.props.addData({ section: key, value })
+            })
+        }
         render() {
             const { description } = this.state[componentName]
+
             return (
                 <WrappedComponent>
                     <Header label={componentName} onclick={e => this.props.toggle(e, componentName)} />
@@ -53,7 +63,8 @@ export default function SkillsExpCert(WrappedComponent, componentName, enable = 
                                     name={key} onHandleChange={this.onHandleChange} removeButton={this.removeButton}
                                     placeholder={componentName} value={value} key={key} />
                             ))}
-                            {enable && <Button />}
+
+                            {enable && <Checkbox onEnable={e => this.onEnable(e, componentName)} enabled={this.state[componentName].enable} />}
                         </div>
                         : null}
 
