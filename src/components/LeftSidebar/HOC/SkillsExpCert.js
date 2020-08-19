@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { toast } from 'react-toastify'
+import uuid from 'react-uuid'
+
 import { addData } from '../../../redux/actions'
 import FormInput from '../../Shared/FormInput'
 import Header from '../../Shared/Header'
 import RemoveInputField from '../../Utils/RemoveInputField'
-import uuid from 'react-uuid'
 import Checkbox from '../../Shared/Checkbox'
 
 export default function SkillsExpCert(WrappedComponent, componentName, enable = false) {
@@ -47,6 +49,16 @@ export default function SkillsExpCert(WrappedComponent, componentName, enable = 
             }, () => {
                 const value = this.state[key]
                 this.props.addData({ section: key, value })
+                if (en) {
+                    toast.success(`${[key]} added.`, {
+                        bodyClassName: 'text-center text-black-800 py-1',
+                    });
+                } else {
+                    toast.error(`${[key]} removed.`, {
+                        bodyClassName: 'text-center text-black-800 py-1',
+                    });
+                }
+
             })
         }
         render() {
@@ -72,8 +84,8 @@ export default function SkillsExpCert(WrappedComponent, componentName, enable = 
             )
         }
     }
-    const mapStateToProps = state => ({
-        [componentName]: state.resume[componentName]
+    const mapStateToProps = ({ resume }) => ({
+        [componentName]: resume[componentName]
     })
     const mapDispatchToProps = (dispatch) => ({
         addData: data => dispatch(addData(data))

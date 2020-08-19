@@ -26,8 +26,8 @@ class LeftSidebar extends Component {
     }
     render() {
         return (
-            <div className="left-right-container" >
-                <div className=" bg-gray-300 rounded shadow flex-wrap sticky top-0">
+            <div className="left-right-container pt-3 shadow-2xl lg:w-64 xl:w-64 md:w-full" >
+                <div className="bg-gray-300 rounded shadow flex-wrap sticky top-0">
                     <Contact show={this.state.show} toggle={this.toggle} />
                     <Objective show={this.state.show} toggle={this.toggle} />
                     <Profile show={this.state.show} toggle={this.toggle} />

@@ -12,10 +12,7 @@ module.exports = {
       fontFamily: {
         myfont: ['Red Rose']
       }
-    },
-    // screens: {
-    //   print: { 'raw': 'print' }
-    // }
+    }
   },
   variants: {},
   plugins: [],

@@ -1,6 +1,9 @@
 {
   "objective": "Being given to understand that you are entertaining candidates for various jobs in your esteemed organization. I offer myself as one of the candidate for a suitable job and furnish the following Curriculum Vitae for favoring of your consideration and early orders.",
-  "image": "",
+  "image": {
+    "enable": true,
+    "source": ""
+  },
   "profile": {
     "name": "John Doe",
     "date_of_birth": "05-01-1999",

@@ -6,7 +6,7 @@ import Resume from './components/Resume/Resume'
 
 function App() {
   return (
-    <div className="sm:flex-none md:flex lg:flex xl:flex bg-gray-300 py-2 w-screen">
+    <div className="sm:flex-none md:flex lg:flex xl:flex bg-gray-300">
 
       <LeftSidebar />
 

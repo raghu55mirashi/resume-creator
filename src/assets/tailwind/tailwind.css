@@ -5,7 +5,7 @@
 @tailwind components;
 
 .left-right-container {
-  @apply font-myfont w-64 px-1 py-2;
+  @apply font-myfont px-1 py-2;
 }
 
 @tailwind utilities;

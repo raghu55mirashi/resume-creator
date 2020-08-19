@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import photo from '../assets/image/user.JPG'
 
 const Objective = ({ objective }) => {
     return (
@@ -57,6 +58,7 @@ const Address = ({ address }) => {
     )
 }
 const Contact = ({ contact, image }) => {
+    const img = image.source ? image.source : photo;
     return (
         <div className="flex">
             <div className="flex-1 text-left">
@@ -67,8 +69,8 @@ const Contact = ({ contact, image }) => {
                 <span className="font-bold text-lg">CURRICULUM VITAE</span>
             </div>
             <div className="flex-1 overflow-hidden">
-                <div className="flex justify-center">
-                    <img src={image} alt="pic" id="photo" className="h-40 w-40 rounded-full object-center" />
+                <div className="flex justify-center h-40">
+                    {image.enable && <img src={img} alt="pic" id="photo" className="h-40 w-40  rounded-full object-center" />}
                 </div>
             </div>
         </div>

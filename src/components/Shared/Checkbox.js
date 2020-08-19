@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Checkbox = ({ onEnable, enabled }) => {
-    console.log(enabled);
     return (
         <div className="text-center">
             <label className="inline-flex items-center mt-3">

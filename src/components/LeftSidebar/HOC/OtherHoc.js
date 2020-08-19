@@ -36,8 +36,8 @@ export default function OtherHoc(WrappedComponent, componentName) {
             )
         }
     }
-    const mapStateToProps = state => ({
-        [componentName]: state.resume[componentName]
+    const mapStateToProps = ({ resume }) => ({
+        [componentName]: resume[componentName]
     })
     const mapDispatchToProps = (dispatch) => ({
         addData: data => dispatch(addData(data))
