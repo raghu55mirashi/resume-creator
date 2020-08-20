@@ -6,8 +6,8 @@ const Objective = ({ objective }) => {
     return (
         <div className="flex">
             <div>
-                <h1 className="font-bold uppercase pb-1">objective:</h1>
-                <p className="text-base font-semibold">
+                <div className="title font-bold uppercase pb-1">objective:</div>
+                <p className="font-normal">
                     {objective}
                 </p>
             </div>
@@ -17,7 +17,7 @@ const Objective = ({ objective }) => {
 const Profile = ({ profile }) => {
     return (
         <div className="flex-1">
-            <h1 className="font-bold uppercase py-1 pt-4">PERSONAL PROFILE:</h1>
+            <div className="title font-bold uppercase py-1 pt-4">PERSONAL PROFILE:</div>
             <table className="table-auto">
                 <thead></thead>
                 <tbody>
@@ -38,8 +38,8 @@ const Profile = ({ profile }) => {
 }
 const Address = ({ address }) => {
     return (
-        <div className="flex-initial max-w-xs">
-            <p className="font-bold pr-10 pt-4">Permanent Address:</p>
+        <div className="flex-initial min-w-xs pr-0 address">
+            <p className="font-bold pt-4">Permanent Address:</p>
             <table>
                 <thead></thead>
                 <tbody>
@@ -60,16 +60,16 @@ const Address = ({ address }) => {
 const Contact = ({ contact, image }) => {
     const img = image.source ? image.source : photo;
     return (
-        <div className="flex">
-            <div className="flex-1 text-left">
+        <div className="flex" id="sc">
+            <div className="flex-1 text-left pt-3">
                 <span className="text-xs block">Contact No: {contact.cell}</span>
                 <span className="text-xs block">{contact.email}</span>
             </div>
             <div className="flex-1 py-10 text-center pt-16">
-                <span className="font-bold text-lg">CURRICULUM VITAE</span>
+                <span className="curriculum font-bold lg:text-lg">CURRICULUM VITAE</span>
             </div>
             <div className="flex-1 overflow-hidden">
-                <div className="flex justify-center h-40">
+                <div className="flex justify-center lg:h-40 sm:h-24">
                     {image.enable && <img src={img} alt="pic" id="photo" className="h-40 w-40  rounded-full object-center" />}
                 </div>
             </div>
@@ -88,10 +88,10 @@ const Qualification = ({ qualification }) => {
     return (
         <div className="flex">
             <div>
-                <h1 className="font-bold uppercase pb-1 pt-4">qualification:</h1>
+                <div className="title font-bold uppercase pb-1 pt-4">qualification:</div>
                 {
                     Object.values(qualification.description).map((value, id) => (
-                        <p className="text-base font-semibold pl-8" key={id}>
+                        <p className="font-semibold pl-8" key={id}>
                             {value}
                         </p>
                     ))
@@ -104,12 +104,12 @@ const Skills = ({ skills }) => {
     return (
         <div className="flex">
             <div>
-                <h1 className="font-bold uppercase pb-1 pt-4">additional skills:</h1>
+                <div className="title font-bold uppercase pb-1 pt-4">additional skills:</div>
                 <ul className="pl-8">
                     {
                         Object.values(skills.description).map((value, id) => (
-                            <li className="list-disc text-base" key={id}>
-                                {value}
+                            <li className="list-disc" key={id}>
+                                <p>{value}</p>
                             </li>
                         ))
                     }
@@ -122,10 +122,10 @@ const Experience = ({ experience }) => {
     return (
         <div className="flex">
             <div>
-                <h1 className="font-bold uppercase pb-1 pt-4">Work Experience:</h1>
+                <div className="title font-bold uppercase pb-1 pt-4">Work Experience:</div>
                 {
                     Object.values(experience.description).map((value, id) => (
-                        <p className="text-base pl-8" key={id}>
+                        <p className="pl-8" key={id}>
                             {value}
                         </p>
                     ))
@@ -138,10 +138,10 @@ const Certification = ({ certification }) => {
     return (
         <div className="flex">
             <div>
-                <h1 className="font-bold uppercase pb-1 pt-4">certification:</h1>
+                <div className="title font-bold uppercase pb-1 pt-4">certification:</div>
                 {
                     Object.values(certification.description).map((value, id) => (
-                        <p className="text-base pl-8" key={id}>
+                        <p className="pl-8" key={id}>
                             {value}
                         </p>
                     ))
@@ -154,8 +154,8 @@ const Declaration = () => {
     return (
         <div className="flex">
             <div>
-                <h1 className="font-bold uppercase pb-1 pt-4">declaration:</h1>
-                <p className="text-base">
+                <div className="title font-bold uppercase pb-1 pt-4">declaration:</div>
+                <p className="lg:text-base sm:text-sm">
                     I hereby declare that the above mentioned particulars are true and genuine to the best
                     of my knowledge and belief.
                 </p>

@@ -24,7 +24,7 @@ export default function OtherHoc(WrappedComponent, componentName) {
                 <WrappedComponent>
                     <Header label={componentName} onclick={e => this.props.toggle(e, componentName)} />
                     {this.props.show === `${componentName}` ?
-                        <div className=" pt-2 pb-10">
+                        <div className="pt-2 pb-10">
                             {Object.entries(data).map(([key, value]) => (
                                 <FormInput type="text" label={key}
                                     name={key} onHandleChange={this.onHandleChange}

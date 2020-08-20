@@ -36,7 +36,7 @@ class SetImage extends Component {
                 <Header label="Image" onclick={e => this.props.toggle(e, 'image')} />
                 {this.props.show === 'image'
                     ? <div className=" pt-2 pb-10 text-center">
-                        <input type="file" style={{ width: "105px" }} name="image" onChange={this.onHandleChange} />
+                        <input type="file" style={{ width: "104px" }} name="image" onChange={this.onHandleChange} />
                         <Checkbox onEnable={e => this.onEnable(e)} enabled={this.state.image.enable} />
                     </div>
                     : null}

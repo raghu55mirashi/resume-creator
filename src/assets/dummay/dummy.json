@@ -1,5 +1,5 @@
 {
-  "objective": "Being given to understand that you are entertaining candidates for various jobs in your esteemed organization. I offer myself as one of the candidate for a suitable job and furnish the following Curriculum Vitae for favoring of your consideration and early orders.",
+  "objective": "Being given to understand that you are entertaining candidates for various jobs in your esteemed organization. I offer myself as one of the candidate for a suitable job and furnish the following Curriculum Vitae for favouring of your consideration and early orders.",
   "image": {
     "enable": true,
     "source": ""
@@ -13,11 +13,11 @@
     "languages": "English, Hindi"
   },
   "address": {
-    "at": "XYZ",
-    "post": "XYX",
-    "city": "ABCC",
-    "district": "XBXN",
-    "state": "CSCCCCC",
+    "at": "Abcd",
+    "post": "Xyz",
+    "city": "Pune",
+    "district": "Pune",
+    "state": "Maharashtra",
     "pin_code": "5824333"
   },
   "contact": {
@@ -40,8 +40,8 @@
   "experience": {
     "enable": true,
     "description": {
-      "description-0": "1 year as Software Developer in XYZ Pvt Ltd/Mumbai",
-      "description-1": "3 Years as IT-Engineer in ABC /Mumbai"
+      "description-0": "1 year as Software Developer in XYZ Pvt Ltd/Pune",
+      "description-1": "3 Years as IT-Engineer in ABC /Pune"
     }
   },
   "certification": {

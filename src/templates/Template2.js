@@ -1,135 +1,151 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import photo from '../assets/image/user.JPG'
 
-import photo from '../assets/images/me.JPG'
-
-const Contact = () => {
-    return (
-        <div className="flex">
-            <div className="flex-1 text-left">
-                <span className="text-xs block">Contact No: 8217895259</span>
-                <span className="text-xs block">raghu55mirashi@gmail.com</span>
-            </div>
-            <div className="flex-1 py-10 text-center pt-16">
-                <span className="font-bold text-lg">CURRICULUM VITAE</span>
-            </div>
-            <div className="flex-1 overflow-hidden">
-                <div className="flex justify-center">
-                    <img src={photo} alt="pic" className="h-40 w-40 rounded-full object-center" />
-                </div>
-            </div>
-        </div>
-    )
-}
-const Objective = () => {
+const Objective = ({ objective }) => {
     return (
         <div className="flex">
             <div>
                 <h1 className="font-bold uppercase pb-1">objective:</h1>
                 <p className="text-base font-semibold">
-                    Being given to understand that you are entertaining candidates for various jobs in your
-                    esteemed organization. I offer myself as one of the candidate for a suitable job and furnish
-                    the following Curriculum Vitae for favoring of your consideration and early orders.
+                    {objective}
                 </p>
             </div>
         </div>
     )
 }
-const Profile = () => {
+const Profile = ({ profile }) => {
     return (
         <div className="flex-1">
             <h1 className="font-bold uppercase py-1 pt-4">PERSONAL PROFILE:</h1>
             <table className="table-auto">
                 <thead></thead>
                 <tbody>
-                    <tr><td className="align-top pt-2">Name</td><td className="pr-2 align-top pt-2">:</td><td className="align-top pt-2">Raghavendra Apparao Mirashi</td></tr>
-                    <tr><td className="align-top pt-2">Date of Birth</td><td className="pr-2 align-top pt-2">:</td><td className="align-top pt-2">5th March 1988</td></tr>
-                    <tr><td className="align-top pt-2">Gender</td><td className="pr-2 align-top pt-2">:</td><td className="align-top pt-2">Male</td></tr>
-                    <tr><td className="align-top pt-2">Father’s Name</td><td className="pr-2 align-top pt-2">:</td><td className="align-top pt-2">Apparao Mirashi</td></tr>
-                    <tr><td className="align-top pt-2">Marital status</td><td className="pr-2 align-top pt-2">:</td><td className="align-top pt-2">Unmarried</td></tr>
-                    <tr><td className="align-top pt-2">Languages known</td><td className="pr-2 align-top pt-2">:</td><td className="align-top pt-2">English, Hindi, Marathi, Kannada</td></tr>
+                    {
+                        Object.entries(profile).map(([key, value]) => (
+                            <tr key={key}>
+                                <td className="align-top pt-2 capitalize">{key.split('_').join(' ')}</td>
+                                <td className="pr-2 align-top pt-2">:</td>
+                                <td className="pt-2 align-top capitalize">
+                                    {value}</td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </table>
         </div>
     )
 }
-const Address = () => {
+const Address = ({ address }) => {
     return (
         <div className="flex-initial max-w-xs">
             <p className="font-bold pr-10 pt-4">Permanent Address:</p>
             <table>
                 <thead></thead>
                 <tbody>
-                    <tr><td className="align-top pt-2">At</td><td className="pr-2 align-top pt-2">:</td><td className="pt-2 align-top">Mundwad</td></tr>
-                    <tr><td className="align-top pt-2">Post</td><td className="pr-2 align-top pt-2">:</td><td className="pt-2 align-top">Kannigeri</td></tr>
-                    <tr><td className="align-top pt-2">Tal</td><td className="pr-2 align-top pt-2">:</td><td className="pt-2 align-top">Yellapur</td></tr>
-                    <tr><td className="align-top pt-2">Dist</td><td className="pr-2 align-top pt-2">:</td><td className="pt-2 align-top">Uttar kannada</td></tr>
-                    <tr><td className="align-top pt-2">State</td><td className="pr-2 align-top pt-2">:</td><td className="pt-2 align-top">Karnataka</td></tr>
-                    <tr><td className="align-top pt-2">Pin</td><td className="pr-2 align-top pt-2">:</td><td className="pt-2 align-top">581359</td></tr>
+                    {
+                        Object.entries(address).map(([key, value]) => (
+                            <tr key={key}>
+                                <td className="align-top pt-2 capitalize">{key.split('_').join(' ')}</td>
+                                <td className="pr-2 align-top pt-2">:</td>
+                                <td className="pt-2 align-top capitalize">{value}</td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </table>
         </div>
     )
 }
-const ProfileAndAddress = () => {
+const Contact = ({ contact, image }) => {
+    const img = image.source ? image.source : photo;
     return (
         <div className="flex">
-            <Profile />
-            <Address />
-        </div>
-    )
-}
-const Qualification = () => {
-    return (
-        <div className="flex">
-            <div>
-                <h1 className="font-bold uppercase pb-1 pt-4">qualification:</h1>
-                <p className="text-base font-semibold pl-8">
-                    Bachelor of Engineering in Computer Science
-                </p>
+            <div className="flex-1 text-left">
+                <span className="text-xs block">Contact No: {contact.cell}</span>
+                <span className="text-xs block">{contact.email}</span>
+            </div>
+            <div className="flex-1 py-10 text-center pt-16">
+                <span className="font-bold text-lg">CURRICULUM VITAE</span>
+            </div>
+            <div className="flex-1 overflow-hidden">
+                <div className="flex justify-center h-40">
+                    {image.enable && <img src={img} alt="pic" id="photo" className="h-40 w-40  rounded-full object-center" />}
+                </div>
             </div>
         </div>
     )
 }
-const Skills = () => {
+const ProfileAndAddress = ({ profile, address }) => {
+    return (
+        <div className="flex">
+            <Profile profile={profile} />
+            <Address address={address} />
+        </div>
+    )
+}
+const Qualification = ({ qualification }) => {
+    return (
+        <div className="flex">
+            <div>
+                <h1 className="font-bold uppercase pb-1 pt-4">qualification:</h1>
+                {
+                    Object.values(qualification.description).map((value, id) => (
+                        <p className="text-base font-semibold pl-8" key={id}>
+                            {value}
+                        </p>
+                    ))
+                }
+            </div>
+        </div>
+    )
+}
+const Skills = ({ skills }) => {
     return (
         <div className="flex">
             <div>
                 <h1 className="font-bold uppercase pb-1 pt-4">additional skills:</h1>
                 <ul className="pl-8">
-                    <li className="list-disc text-base">
-                        Computer networking and System Services
-                    </li>
-                    <li className="list-disc text-base">
-                        Windows and Linux Operating Systems
-                    </li>
+                    {
+                        Object.values(skills.description).map((value, id) => (
+                            <li className="list-disc text-base" key={id}>
+                                {value}
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
         </div>
     )
 }
-const Experience = () => {
+const Experience = ({ experience }) => {
     return (
         <div className="flex">
             <div>
                 <h1 className="font-bold uppercase pb-1 pt-4">Work Experience:</h1>
-                <p className="text-base pl-8">
-                    1 year as Software Developer in Softebizz Technologies Pvt Ltd/Pune
-                </p>
-                <p className="text-base pl-8">
-                    3 Years as IT-Engineer in Premier Services/Goa
-               </p>
+                {
+                    Object.values(experience.description).map((value, id) => (
+                        <p className="text-base pl-8" key={id}>
+                            {value}
+                        </p>
+                    ))
+                }
             </div>
         </div>
     )
 }
-const Certification = () => {
+const Certification = ({ certification }) => {
     return (
         <div className="flex">
             <div>
                 <h1 className="font-bold uppercase pb-1 pt-4">certification:</h1>
-                <p className="text-base pl-8">
-                    <span className="font-semibold">Land Acquisition Certificate</span> - Land acquired by state Govt. in Bommanalli pickup Dam
-                </p>
+                {
+                    Object.values(certification.description).map((value, id) => (
+                        <p className="text-base pl-8" key={id}>
+                            {value}
+                        </p>
+                    ))
+                }
             </div>
         </div>
     )
@@ -148,19 +164,27 @@ const Declaration = () => {
     )
 }
 
-const Template1 = () => {
-    return (
-        <React.Fragment>
-            <Contact />
-            <Objective />
-            <ProfileAndAddress />
-            <Qualification />
-            <Skills />
-            <Experience />
-            <Certification />
-            <Declaration />
-        </React.Fragment>
-    )
+class Template1 extends React.Component {
+    render() {
+        const { objective, profile, address, contact, qualification, image,
+            skills, experience, certification, declaration } = this.props.resume
+        return (
+            <React.Fragment>
+                <Contact contact={contact} image={image} />
+                <Objective objective={objective} />
+                <ProfileAndAddress profile={profile} address={address} />
+                <Qualification qualification={qualification} />
+                {skills.enable && <Skills skills={skills} />}
+                {experience.enable && <Experience experience={experience} />}
+                {certification.enable && <Certification certification={certification} />}
+                <Declaration declaration={declaration} />
+            </React.Fragment>
+        )
+    }
 }
 
-export default Template1
+const mapStateToProps = ({ resume }) => ({
+    resume
+})
+
+export default connect(mapStateToProps)(Template1)
