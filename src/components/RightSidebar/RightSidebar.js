@@ -7,8 +7,11 @@ import image1 from '../../assets/image/temp1.JPG'
 import image2 from '../../assets/image/temp2.JPG'
 
 class RightSidebar extends Component {
-    state = {
-        template_name: this.props.template
+    constructor(props) {
+        super(props)
+        this.state = {
+            template_name: this.props.template.template_name
+        }
     }
     /** Below function is used for removing data from localstorage and reset all data */
     resetResume = () => {
@@ -66,7 +69,7 @@ class RightSidebar extends Component {
     }
 }
 const mapStateToProps = ({ resume }) => ({
-    template: resume.templates.template_name
+    template: resume.templates
 })
 const mapDispatchToProps = dispatch => ({
     resetData: () => dispatch(resetData()),
