@@ -150,6 +150,33 @@ const Certification = ({ certification }) => {
         </div>
     )
 }
+const AddSections = ({ add_section }) => {
+    return (
+        <div className="flex">
+            <div>
+                {
+                    Object.entries(add_section).map(([key1, value1]) => (
+                        key1 !== "enable" ?
+                            (value1.section_name !== '' &&
+                                <div key={key1}>
+                                    {Object.entries(value1).map(([section, desc]) => (
+                                        <div key={section}>
+                                            {section === 'section_name' &&
+                                                <div className="title font-bold uppercase pb-1 pt-4">{`${desc ? desc + ':' : ''}`}</div>}
+                                            {section !== 'section_name' &&
+                                                <p className="pl-8">
+                                                    {desc}
+                                                </p>}
+                                        </div>
+                                    ))}
+
+                                </div>) : null
+                    ))
+                }
+            </div>
+        </div>
+    )
+}
 const Declaration = () => {
     return (
         <div className="flex">
@@ -167,7 +194,7 @@ const Declaration = () => {
 class Template1 extends React.Component {
     render() {
         const { objective, profile, address, contact, qualification, image,
-            skills, experience, certification, declaration } = this.props.resume
+            skills, experience, certification, add_section, declaration } = this.props.resume
         return (
             <React.Fragment>
                 <Contact contact={contact} image={image} />
@@ -177,6 +204,7 @@ class Template1 extends React.Component {
                 {skills.enable && <Skills skills={skills} />}
                 {experience.enable && <Experience experience={experience} />}
                 {certification.enable && <Certification certification={certification} />}
+                {add_section.enable && <AddSections add_section={add_section} />}
                 <Declaration declaration={declaration} />
             </React.Fragment>
         )

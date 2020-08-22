@@ -49,5 +49,15 @@
     "description": {
       "description-0": "Javascript developer intern certificate"
     }
+  },
+  "add_section": {
+    "enable": false,
+    "section": {
+      "section_name": "",
+      "description": ""
+    }
+  },
+  "templates": {
+    "template_name": "Template1"
   }
 }

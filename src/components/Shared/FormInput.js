@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormInput = ({ type, label = "", name, placeholder, value, onHandleChange, extraButton = false, appendButton, removeButton }) => {
+const FormInput = ({ type, section = '', label = "", name, placeholder, value, onHandleChange, extraButton = false, appendButton, removeButton }) => {
     const UpdatedPlaceholder = placeholder.charAt(0).toUpperCase() + placeholder.slice(1).split('_').join(' ')
     return (
         <label className="block pl-1 pr-1">
@@ -14,8 +14,8 @@ const FormInput = ({ type, label = "", name, placeholder, value, onHandleChange,
                 value={value} />
             {extraButton
                 ? <span>
-                    <button onClick={appendButton} className="p-1 inline border border-white border-solid rounded-sm ml-px hover:text-white hover:bg-black" >+</button>
-                    <button onClick={e => removeButton(e, name)} className="p-1 inline border border-white border-solid rounded-sm bg-red-600 hover:text-white hover:bg-black" >-</button>
+                    <button onClick={() => appendButton(section)} className="extrabtn inline border border-white border-solid rounded-sm ml-px hover:text-white hover:bg-black" >+</button>
+                    <button onClick={e => removeButton(e, name, section)} className="extrabtn inline border border-white border-solid rounded-sm bg-red-600 hover:text-white hover:bg-black" >-</button>
                 </span>
                 : null
             }

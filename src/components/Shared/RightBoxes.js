@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RightBoxes = ({ title, description, children }) => {
+const RightBoxes = ({ title, description = '', children }) => {
     return (
         <div className="bg-white rounded shadow text-center sticky top-0 mb-2">
             <div className="info p-4">
