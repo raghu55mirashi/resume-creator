@@ -44,8 +44,8 @@ class SetImage extends Component {
         )
     }
 }
-const mapStateToProps = state => ({
-    image: state.resume.image
+const mapStateToProps = ({ resume }) => ({
+    image: resume.image
 })
 const mapDispatchToProps = (dispatch) => ({
     addData: data => dispatch(addData(data))
