@@ -35,8 +35,11 @@ class SetImage extends Component {
             <React.Fragment>
                 <Header label="Image" onclick={e => this.props.toggle(e, 'image')} />
                 {this.props.show === 'image'
-                    ? <div className=" pt-2 pb-10 text-center">
-                        <input type="file" style={{ width: "104px" }} name="image" onChange={this.onHandleChange} />
+                    ? <div className=" pt-2 pb-2  text-center">
+                        <label htmlFor="myfile" className={`transition ease-in duration-700 mt-2 mb-2 pl-3 pr-3 pt-px pb-px hover:bg-black hover:text-white  text-gray-800 font-semibold border border-gray-400 rounded shadow`}>
+                            Select Image
+                        </label>
+                        <input type="file" id="myfile" className="pb-2 hidden" name="image" onChange={this.onHandleChange} />
                         <Checkbox onEnable={e => this.onEnable(e)} enabled={this.state.image.enable} />
                     </div>
                     : null}

@@ -14,8 +14,8 @@ const FormInput = ({ type, section = '', label = "", name, placeholder, value, o
                 value={value} />
             {extraButton
                 ? <span>
-                    <button onClick={() => appendButton(section)} className="extrabtn inline border border-white border-solid rounded-sm ml-px hover:text-white hover:bg-black" >+</button>
-                    <button onClick={e => removeButton(e, name, section)} className="extrabtn inline border border-white border-solid rounded-sm bg-red-600 hover:text-white hover:bg-black" >-</button>
+                    <button onClick={() => appendButton(section)} className="transition ease-in duration-700 extrabtn inline border border-white border-solid rounded-sm ml-px hover:text-white hover:bg-black" >+</button>
+                    <button onClick={e => removeButton(e, name, section)} className="transition ease-in duration-700 extrabtn inline border border-white border-solid rounded-sm bg-red-600 hover:text-white hover:bg-black" >-</button>
                 </span>
                 : null
             }

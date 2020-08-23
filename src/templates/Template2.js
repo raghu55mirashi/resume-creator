@@ -6,7 +6,7 @@ const Objective = ({ objective }) => {
     return (
         <div className="flex">
             <div>
-                <div className="title font-bold uppercase bg-blue-100 block pl-2">objective:</div>
+                <div className="title font-bold uppercase bg-blue-100 block pl-2">OBJECTIVE:</div>
                 <p className="font-normal mt-1 pl-2">
                     {objective}
                 </p>
@@ -39,7 +39,7 @@ const Profile = ({ profile }) => {
 const Address = ({ address }) => {
     return (
         <div className="flex-1 min-w-xs pt-4">
-            <div className="font-bold bg-blue-100 block">Permanent Address:</div>
+            <div className="title font-bold bg-blue-100 block">Permanent Address:</div>
             <table>
                 <thead></thead>
                 <tbody>
@@ -60,7 +60,7 @@ const Address = ({ address }) => {
 const Contact = ({ contact, image, name }) => {
     const img = image.source ? image.source : photo;
     return (
-        <div className="flex" id="sc">
+        <div className="flex">
             <div className="flex-1">
             </div>
             <div className="flex-1 py-10 text-center pt-2">
@@ -89,7 +89,7 @@ const Qualification = ({ qualification }) => {
     return (
         <div className="pt-4">
             <div>
-                <div className=" font-bold uppercase bg-blue-100 block pl-2">qualification:</div>
+                <div className="title font-bold uppercase bg-blue-100 block pl-2">qualification:</div>
                 {
                     Object.values(qualification.description).map((value, id) => (
                         <p className="font-semibold pl-8 mt-1" key={id}>

@@ -29,6 +29,7 @@ class LeftSidebar extends Component {
         return (
             <div className="left-right-container pt-3 shadow-2xl lg:w-64 xl:w-64 md:w-full" >
                 <div className="bg-gray-300 rounded shadow flex-wrap sticky top-0">
+                    <h3 className="text-center pb-2 text-blue-500 ">Resume Creator</h3>
                     <Contact show={this.state.show} toggle={this.toggle} />
                     <Objective show={this.state.show} toggle={this.toggle} />
                     <Profile show={this.state.show} toggle={this.toggle} />

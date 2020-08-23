@@ -39,7 +39,7 @@ export default function SkillsExpCert(WrappedComponent, componentName, enable = 
                     this.props.addData({ section: componentName, value })
                 })
             } else {
-                alert('Need to keep atleast one field')
+                alert('Sorry, Need to keep atleast one field')
             }
         }
         onEnable = (e, key) => {
@@ -69,7 +69,7 @@ export default function SkillsExpCert(WrappedComponent, componentName, enable = 
                     <Header label={componentName} onclick={e => this.props.toggle(e, componentName)} />
 
                     {this.props.show === `${componentName}` ?
-                        <div className=" pt-2 pb-10">
+                        <div className=" pt-2 pb-2">
                             {Object.entries(description).map(([key, value]) => (
                                 <FormInput type="text" extraButton="true" appendButton={this.appendButton}
                                     name={key} onHandleChange={this.onHandleChange} removeButton={this.removeButton}

@@ -102,7 +102,7 @@ class AddMoreSection extends Component {
                 <Header label="Add More" onclick={e => this.props.toggle(e, 'Add More')} />
 
                 {this.props.show === 'Add More' ?
-                    <span className=" pb-2 ">
+                    <span>
                         {Object.entries(add_section).map(([key1, value]) => (
                             key1 !== 'enable' ?
                                 <div className=" border-b-2 border-white border-solid" key={key1}>
