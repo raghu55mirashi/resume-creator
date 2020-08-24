@@ -5,6 +5,8 @@ import RightBoxes from '../Shared/RightBoxes'
 import { resetData, addData } from '../../redux/actions'
 import image1 from '../../assets/image/temp1.JPG'
 import image2 from '../../assets/image/temp2.JPG'
+import image3 from '../../assets/image/temp3.JPG'
+import image4 from '../../assets/image/temp4.JPG'
 
 class RightSidebar extends Component {
     constructor(props) {
@@ -43,6 +45,16 @@ class RightSidebar extends Component {
                         <div onClick={() => this.selectTemplate('Template2')}
                             className={`${this.state.template_name === 'Template2' ? 'border-2' : 'border'} ml-1 w-2/4 float-right border-blue-400 border-solid cursor-pointer`}>
                             <img src={image2} alt="" />
+                        </div>
+                    </div>
+                    <div className="flex pt-2">
+                        <div onClick={() => this.selectTemplate('Template3')}
+                            className={`${this.state.template_name === 'Template3' ? 'border-2' : 'border'}  w-2/4 float-left border-blue-400 border-solid cursor-pointer`}>
+                            <img src={image3} alt="" />
+                        </div>
+                        <div onClick={() => this.selectTemplate('Template4')}
+                            className={`${this.state.template_name === 'Template4' ? 'border-2' : 'border'} ml-1 w-2/4 float-right border-blue-400 border-solid cursor-pointer`}>
+                            <img src={image4} alt="" />
                         </div>
                     </div>
                 </RightBoxes>

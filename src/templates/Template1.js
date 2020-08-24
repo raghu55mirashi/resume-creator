@@ -23,12 +23,13 @@ const Profile = ({ profile }) => {
                 <tbody>
                     {
                         Object.entries(profile).map(([key, value]) => (
-                            <tr key={key}>
-                                <td className="align-top pt-2 capitalize">{key.split('_').join(' ')}</td>
-                                <td className="pr-2 align-top pt-2">:</td>
-                                <td className="pt-2 align-top capitalize">
-                                    {value}</td>
-                            </tr>
+                            (value.trim() !== '' &&
+                                <tr key={key}>
+                                    <td className="align-top pt-2 capitalize">{key.split('_').join(' ')}</td>
+                                    <td className="pr-2 align-top pt-2">:</td>
+                                    <td className="pt-2 align-top capitalize">
+                                        {value}</td>
+                                </tr>)
                         ))
                     }
                 </tbody>
@@ -45,11 +46,12 @@ const Address = ({ address }) => {
                 <tbody>
                     {
                         Object.entries(address).map(([key, value]) => (
-                            <tr key={key}>
-                                <td className="align-top pt-2 capitalize">{key.split('_').join(' ')}</td>
-                                <td className="pr-2 align-top pt-2">:</td>
-                                <td className="pt-2 align-top capitalize">{value}</td>
-                            </tr>
+                            (value.trim() !== '' &&
+                                <tr key={key}>
+                                    <td className="align-top pt-2 capitalize">{key.split('_').join(' ')}</td>
+                                    <td className="pr-2 align-top pt-2">:</td>
+                                    <td className="pt-2 align-top capitalize">{value}</td>
+                                </tr>)
                         ))
                     }
                 </tbody>
@@ -62,8 +64,8 @@ const Contact = ({ contact, image }) => {
     return (
         <div className="flex" id="sc">
             <div className="flex-1 text-left pt-3">
-                <span className="text-xs block">Contact No: {contact.cell}</span>
-                <span className="text-xs block">{contact.email}</span>
+                {(contact.cell).trim() !== '' && <span className="text-xs block">Contact No: {contact.cell}</span>}
+                {(contact.email).trim() !== '' && <span className="text-xs block">{contact.email}</span>}
             </div>
             <div className="flex-1 py-10 text-center pt-16">
                 <span className="curriculum font-bold lg:text-lg">CURRICULUM VITAE</span>
@@ -108,9 +110,10 @@ const Skills = ({ skills }) => {
                 <ul className="pl-8">
                     {
                         Object.values(skills.description).map((value, id) => (
-                            <li className="list-disc" key={id}>
-                                <p>{value}</p>
-                            </li>
+                            (value.trim() !== '' &&
+                                <li className="list-disc" key={id}>
+                                    <p>{value}</p>
+                                </li>)
                         ))
                     }
                 </ul>
@@ -157,7 +160,7 @@ const AddSections = ({ add_section }) => {
                 {
                     Object.entries(add_section).map(([key1, value1]) => (
                         key1 !== "enable" ?
-                            (value1.section_name !== '' &&
+                            ((value1.section_name).trim() !== '' &&
                                 <div key={key1}>
                                     {Object.entries(value1).map(([section, desc]) => (
                                         <div key={section}>
