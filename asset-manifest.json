@@ -1,30 +1,32 @@
 {
   "files": {
     "main.css": "/resume-creator/static/css/main.5c0ccf41.chunk.css",
-    "main.js": "/resume-creator/static/js/main.1a816c6d.chunk.js",
-    "main.js.map": "/resume-creator/static/js/main.1a816c6d.chunk.js.map",
+    "main.js": "/resume-creator/static/js/main.89876bd7.chunk.js",
+    "main.js.map": "/resume-creator/static/js/main.89876bd7.chunk.js.map",
     "runtime-main.js": "/resume-creator/static/js/runtime-main.ac90bde0.js",
     "runtime-main.js.map": "/resume-creator/static/js/runtime-main.ac90bde0.js.map",
     "static/css/2.d34346ea.chunk.css": "/resume-creator/static/css/2.d34346ea.chunk.css",
-    "static/js/2.18da4278.chunk.js": "/resume-creator/static/js/2.18da4278.chunk.js",
-    "static/js/2.18da4278.chunk.js.map": "/resume-creator/static/js/2.18da4278.chunk.js.map",
+    "static/js/2.c64679f3.chunk.js": "/resume-creator/static/js/2.c64679f3.chunk.js",
+    "static/js/2.c64679f3.chunk.js.map": "/resume-creator/static/js/2.c64679f3.chunk.js.map",
     "index.html": "/resume-creator/index.html",
-    "precache-manifest.b606be0dcd293ba89fe220ea107d99b7.js": "/resume-creator/precache-manifest.b606be0dcd293ba89fe220ea107d99b7.js",
+    "precache-manifest.dbc9f20f12d056c6316c005273a62282.js": "/resume-creator/precache-manifest.dbc9f20f12d056c6316c005273a62282.js",
     "service-worker.js": "/resume-creator/service-worker.js",
     "static/css/2.d34346ea.chunk.css.map": "/resume-creator/static/css/2.d34346ea.chunk.css.map",
     "static/css/main.5c0ccf41.chunk.css.map": "/resume-creator/static/css/main.5c0ccf41.chunk.css.map",
-    "static/js/2.18da4278.chunk.js.LICENSE.txt": "/resume-creator/static/js/2.18da4278.chunk.js.LICENSE.txt",
+    "static/js/2.c64679f3.chunk.js.LICENSE.txt": "/resume-creator/static/js/2.c64679f3.chunk.js.LICENSE.txt",
     "static/media/temp1.JPG": "/resume-creator/static/media/temp1.69ec3655.JPG",
     "static/media/temp2.JPG": "/resume-creator/static/media/temp2.5e8d9f95.JPG",
     "static/media/temp3.JPG": "/resume-creator/static/media/temp3.f86afcdd.JPG",
     "static/media/temp4.JPG": "/resume-creator/static/media/temp4.88a5edf7.JPG",
+    "static/media/tempPro1.JPG": "/resume-creator/static/media/tempPro1.5cd1221e.JPG",
+    "static/media/tempPro2.JPG": "/resume-creator/static/media/tempPro2.bc1c6da3.JPG",
     "static/media/user.JPG": "/resume-creator/static/media/user.fd4430f2.JPG"
   },
   "entrypoints": [
     "static/js/runtime-main.ac90bde0.js",
     "static/css/2.d34346ea.chunk.css",
-    "static/js/2.18da4278.chunk.js",
+    "static/js/2.c64679f3.chunk.js",
     "static/css/main.5c0ccf41.chunk.css",
-    "static/js/main.1a816c6d.chunk.js"
+    "static/js/main.89876bd7.chunk.js"
   ]
 }
