@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import photo from '../assets/image/user.JPG'
+import photo from '../../assets/image/user.JPG'
 
 const Objective = ({ objective }) => {
     return (
@@ -172,7 +172,6 @@ const AddSections = ({ add_section }) => {
                                                 </p>}
                                         </div>
                                     ))}
-
                                 </div>) : null
                     ))
                 }

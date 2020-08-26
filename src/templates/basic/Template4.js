@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import photo from '../assets/image/user.JPG'
+import photo from '../../assets/image/user.JPG'
 
 const Contact = ({ contact, image, name }) => {
     const img = image.source ? image.source : photo;

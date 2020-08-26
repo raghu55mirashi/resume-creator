@@ -2,18 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Button from '../Shared/Button'
 import RightBoxes from '../Shared/RightBoxes'
-import { resetData, addData } from '../../redux/actions'
-import image1 from '../../assets/image/temp1.JPG'
-import image2 from '../../assets/image/temp2.JPG'
-import image3 from '../../assets/image/temp3.JPG'
-import image4 from '../../assets/image/temp4.JPG'
+import { resetData } from '../../redux/basicResume/actions'
+import BasicTemp from './BasicTemp'
+import ProTemp from './ProTemp'
+import { changeTemp } from '../../redux/switchReducer'
 
 class RightSidebar extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            template_name: this.props.template.template_name
-        }
+    state = {
+        template: this.props.switchResume.template
+    }
+    onLoad = type => {
+        this.setState({ template: type }, () => {
+            const value = this.state.template
+            this.props.changeTemp(value)
+        })
     }
     /** Below function is used for removing data from localstorage and reset all data */
     resetResume = () => {
@@ -27,37 +29,20 @@ class RightSidebar extends Component {
     redirectGithub = () => {
         window.open('https://github.com/raghu55mirashi/resume-creator', '_blank')
     }
-    selectTemplate = (template) => {
-        this.setState({ template_name: template }, () => {
-            const value = this.state
-            this.props.selectTemplate({ section: 'templates', value })
-        })
-    }
     render() {
+        const { template } = this.props.switchResume
         return (
             <div className="left-right-container pt-3 shadow-2xl lg:w-64 xl:w-64 md:w-full">
-                <RightBoxes title="Templates">
-                    <div className="flex pt-2">
-                        <div onClick={() => this.selectTemplate('Template1')}
-                            className={`${this.state.template_name === 'Template1' ? 'border-2' : 'border'}  w-2/4 float-left border-blue-400 border-solid cursor-pointer`}>
-                            <img src={image1} alt="" />
-                        </div>
-                        <div onClick={() => this.selectTemplate('Template2')}
-                            className={`${this.state.template_name === 'Template2' ? 'border-2' : 'border'} ml-1 w-2/4 float-right border-blue-400 border-solid cursor-pointer`}>
-                            <img src={image2} alt="" />
-                        </div>
+                <div className="bg-gray-300 rounded shadow flex-wrap sticky top-0">
+                    <div className="text-center pb-2 text-blue-500 ">
+                        <button onClick={() => this.onLoad('basic')}
+                            className={`${template === 'basic' ? 'border' : 'border-none'}  mx-1 border-solid border-white rounded-sm w-20`}>Basic</button>
+                        <button onClick={() => this.onLoad('pro')}
+                            className={`${template === 'pro' ? 'border' : 'border-none'}  mx-1 border-solid border-white rounded-sm w-20`}>Pro</button>
                     </div>
-                    <div className="flex pt-2">
-                        <div onClick={() => this.selectTemplate('Template3')}
-                            className={`${this.state.template_name === 'Template3' ? 'border-2' : 'border'}  w-2/4 float-left border-blue-400 border-solid cursor-pointer`}>
-                            <img src={image3} alt="" />
-                        </div>
-                        <div onClick={() => this.selectTemplate('Template4')}
-                            className={`${this.state.template_name === 'Template4' ? 'border-2' : 'border'} ml-1 w-2/4 float-right border-blue-400 border-solid cursor-pointer`}>
-                            <img src={image4} alt="" />
-                        </div>
-                    </div>
-                </RightBoxes>
+                    {template === 'basic' && <BasicTemp />}
+                    {template === 'pro' && <ProTemp />}
+                </div>
                 <RightBoxes
                     title="Information"
                     description="Changes you make to your resume are saved automatically 
@@ -80,11 +65,11 @@ class RightSidebar extends Component {
         )
     }
 }
-const mapStateToProps = ({ resume }) => ({
-    template: resume.templates
+const mapStateToProps = (state) => ({
+    switchResume: state.switchResume
 })
 const mapDispatchToProps = dispatch => ({
     resetData: () => dispatch(resetData()),
-    selectTemplate: (data) => dispatch(addData(data))
+    changeTemp: data => dispatch(changeTemp(data))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(RightSidebar)

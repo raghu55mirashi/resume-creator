@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 import uuid from 'react-uuid'
 
-import { addData } from '../../../redux/actions'
-import FormInput from '../../Shared/FormInput'
-import Header from '../../Shared/Header'
-import RemoveInputField from '../../Utils/RemoveInputField'
-import Checkbox from '../../Shared/Checkbox'
+import { addData } from '../../../../redux/basicResume/actions'
+import { addDataPro } from '../../../../redux/proResume/actions'
+import FormInput from '../../../Shared/FormInput'
+import Header from '../../../Shared/Header'
+import RemoveInputField from '../../../Utils/RemoveInputField'
+import Checkbox from '../../../Shared/Checkbox'
 
-export default function SkillsExpCert(WrappedComponent, componentName, enable = false) {
+export default function SkillsExpCert(WrappedComponent, componentName, enable = false, resumeType = '') {
     class WithTabs extends Component {
         state = {
             [componentName]: this.props[componentName]
@@ -84,11 +85,21 @@ export default function SkillsExpCert(WrappedComponent, componentName, enable = 
             )
         }
     }
-    const mapStateToProps = ({ resume }) => ({
-        [componentName]: resume[componentName]
+    //below code is written bcoz this HOC is used by proResume- Certification
+    var func;
+    var resum;
+    if (resumeType === 'proResume') {
+        func = addDataPro
+        resum = 'proResume'
+    } else {
+        func = addData
+        resum = 'resume'
+    }
+    const mapStateToProps = (state) => ({
+        [componentName]: state[resum][componentName]
     })
     const mapDispatchToProps = (dispatch) => ({
-        addData: data => dispatch(addData(data))
+        addData: data => dispatch(func(data))
     })
     return connect(mapStateToProps, mapDispatchToProps)(WithTabs)
 }

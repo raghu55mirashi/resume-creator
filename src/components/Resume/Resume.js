@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Draggable from "react-draggable";
 import Button from '../Shared/Button'
-import Template1 from '../../templates/Template1';
-import Template2 from '../../templates/Template2';
-import Template3 from '../../templates/Template3';
-import Template4 from '../../templates/Template4';
+import BasicResume from './BasicResume';
+import ProResume from './ProResume';
 
 class Resume extends Component {
     state = {
@@ -35,21 +33,8 @@ class Resume extends Component {
             this.setState({ pos: 'top' })
         }
     }
-    renderTemplates = (template) => {
-        switch (template) {
-            case 'Template1':
-                return <Template1 />
-            case 'Template2':
-                return <Template2 />
-            case 'Template3':
-                return <Template3 />
-            case 'Template4':
-                return <Template4 />
-            default:
-                return <Template1 />
-        }
-    }
     render() {
+        const { template } = this.props.switchResume
         return (
             <div className="flex-1 overflow-hidden shadow-inner relative">
                 <Draggable
@@ -59,12 +44,13 @@ class Resume extends Component {
                     grid={[1, 1]}
                     scale={1}
                 >
-                    <div className=" lg:w-11/12 lg:h-auto xl:w-11/12  xl:h-auto  drag px-8 py-16 m-3 bg-white shadow-2xl rounded-sm cursor-move" id="page">
-                        {this.renderTemplates(this.props.templates.template_name)}
+                    <div className=" lg:w-11/12 lg:h-auto xl:w-11/12  xl:h-auto  drag px-8 py-8 m-3 bg-white shadow-2xl rounded-sm cursor-move" id="page">
+                        {template === 'basic' && <BasicResume />}
+                        {template === 'pro' && <ProResume />}
                     </div>
                 </Draggable>
                 <div className="bottom-0 fixed z-50">
-                    <Button onClickHandle={this.printMe} color="blue">Print or Save</Button>
+                    <Button onClickHandle={this.printMe} color="blue">Preview/Print/Save</Button>
                 </div>
                 <div className="bottom-0 fixed z-50 right-0 lg:hidden sm:block mb-2">
                     <button className=" bg-gray-400 rounded pl-3 pr-3 text-black" onClick={this.scrollButton} >&#8691;</button>
@@ -73,7 +59,7 @@ class Resume extends Component {
         )
     }
 }
-const mapStateToProps = ({ resume }) => ({
-    templates: resume.templates
+const mapStateToProps = (state) => ({
+    switchResume: state.switchResume
 })
 export default connect(mapStateToProps)(Resume)

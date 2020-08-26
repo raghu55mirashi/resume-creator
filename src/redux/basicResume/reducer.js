@@ -1,4 +1,4 @@
-import dummyData from '../assets/dummay/dummy.json'
+import dummyData from '../../assets/dummay/dummy.json'
 import { actionTypes } from './types'
 
 const data = dummyData

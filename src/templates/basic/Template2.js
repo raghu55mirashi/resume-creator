@@ -1,48 +1,36 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import photo from '../assets/image/user.JPG'
+import photo from '../../assets/image/user.JPG'
 
 const Objective = ({ objective }) => {
     return (
         <div className="flex">
             <div>
-                <div className="title font-bold uppercase pb-1">objective:</div>
-                <p className="font-normal">
+                <div className="title font-bold uppercase bg-blue-100 block pl-2">OBJECTIVE:</div>
+                <p className="font-normal mt-1 pl-2">
                     {objective}
                 </p>
             </div>
         </div>
     )
 }
-const Profile = ({ profile, contact }) => {
+const Profile = ({ profile }) => {
     return (
-        <div className="flex-auto">
-            <div className="title font-bold uppercase py-1 pt-4">PERSONAL PROFILE:</div>
+        <div className="flex-1 pt-4">
+            <div className="title font-bold uppercase bg-blue-100 block pl-2">PERSONAL PROFILE:</div>
             <table className="table-auto">
                 <thead></thead>
                 <tbody>
                     {
                         Object.entries(profile).map(([key, value]) => (
                             (value.trim() !== '' && <tr key={key}>
-                                <td className="align-top pt-2 uppercase text-sm">{key.split('_').join(' ')}</td>
-                                <td className="px-12 align-top pt-2">:</td>
+                                <td className="align-top pt-2 pl-2 capitalize">{key.split('_').join(' ')}</td>
+                                <td className="pr-2 align-top pt-2">:</td>
                                 <td className="pt-2 align-top capitalize">
                                     {value}</td>
                             </tr>)
                         ))
                     }
-                    {(contact.email).trim() !== '' &&
-                        <tr>
-                            <td className="align-top pt-2 capitalize">Email</td>
-                            <td className="pr-12 pl-12 align-top pt-2">:</td>
-                            <td className="pt-2 align-top capitalize">{contact.email}</td>
-                        </tr>}
-                    {(contact.cell).trim() !== '' &&
-                        <tr>
-                            <td className="align-top pt-2 capitalize">Mobile No</td>
-                            <td className="pr-12 pl-12 align-top pt-2">:</td>
-                            <td className="pt-2 align-top capitalize">{contact.cell}</td>
-                        </tr>}
                 </tbody>
             </table>
         </div>
@@ -50,17 +38,17 @@ const Profile = ({ profile, contact }) => {
 }
 const Address = ({ address }) => {
     return (
-        <div className="flex-initial min-w-xs pr-0 address">
-            <p className="font-bold pt-4 uppercase">Address:</p>
-            <table >
+        <div className="flex-1 min-w-xs pt-4">
+            <div className="title font-bold bg-blue-100 block">Permanent Address:</div>
+            <table>
                 <thead></thead>
-                <tbody className="grid grid-cols-2 ">
+                <tbody>
                     {
                         Object.entries(address).map(([key, value]) => (
                             (value.trim() !== '' && <tr key={key}>
-                                <td className="align-top capitalize pl-3 font-normal">{key.split('_').join(' ')}</td>
-                                <td className="pr-2 align-top">:</td>
-                                <td className="align-top capitalize">{value}</td>
+                                <td className="align-top pt-2 capitalize">{key.split('_').join(' ')}</td>
+                                <td className="pr-2 align-top pt-2">:</td>
+                                <td className="pt-2 align-top capitalize">{value}</td>
                             </tr>)
                         ))
                     }
@@ -69,14 +57,17 @@ const Address = ({ address }) => {
         </div>
     )
 }
-const Contact = ({ image }) => {
+const Contact = ({ contact, image, name }) => {
     const img = image.source ? image.source : photo;
     return (
-        <div className="flex" id="sc">
-            <div className="flex-1 text-left pt-3">
+        <div className="flex">
+            <div className="flex-1">
             </div>
-            <div className="flex-1 py-10 text-center pt-16">
-                <span className="curriculum font-bold lg:text-lg">CURRICULUM VITAE</span>
+            <div className="flex-1 py-10 text-center pt-2">
+                <span className="text-base block uppercase"><b>{name}</b></span>
+                {(contact.email).trim() !== '' && <span className="text-xs block"><b>Email:</b> {contact.email}</span>}
+                {(contact.cell).trim() !== '' && <span className="text-xs block"><b>Moblile No:</b> {contact.cell}</span>}
+                <div className="curriculum font-bold lg:text-lg pt-8">CURRICULUM VITAE</div>
             </div>
             <div className="flex-1 overflow-hidden">
                 <div className="flex justify-center lg:h-40 sm:h-24">
@@ -86,23 +77,24 @@ const Contact = ({ image }) => {
         </div>
     )
 }
-const ProfileAndAddress = ({ profile, contact }) => {
+const ProfileAndAddress = ({ profile, address }) => {
     return (
         <div className="flex">
-            <Profile profile={profile} contact={contact} />
+            <Profile profile={profile} />
+            <Address address={address} />
         </div>
     )
 }
 const Qualification = ({ qualification }) => {
     return (
-        <div className="flex">
+        <div className="pt-4">
             <div>
-                <div className="title font-bold uppercase pb-1 pt-4">qualification:</div>
+                <div className="title font-bold uppercase bg-blue-100 block pl-2">qualification:</div>
                 {
                     Object.values(qualification.description).map((value, id) => (
-                        <p className="font-semibold pl-8" key={id}>
+                        (value.trim() !== '' && <p className="font-semibold pl-8 mt-1" key={id}>
                             {value}
-                        </p>
+                        </p>)
                     ))
                 }
             </div>
@@ -111,13 +103,13 @@ const Qualification = ({ qualification }) => {
 }
 const Skills = ({ skills }) => {
     return (
-        <div className="flex">
+        <div className="pt-4">
             <div>
-                <div className="title font-bold uppercase pb-1 pt-4">additional skills:</div>
+                <div className="title font-bold uppercase bg-blue-100 block pl-2">additional skills:</div>
                 <ul className="pl-8">
                     {
                         Object.values(skills.description).map((value, id) => (
-                            (value.trim() !== '' && <li className="list-disc" key={id}>
+                            (value.trim() !== '' && <li className="list-disc mt-1" key={id}>
                                 <p>{value}</p>
                             </li>)
                         ))
@@ -129,14 +121,14 @@ const Skills = ({ skills }) => {
 }
 const Experience = ({ experience }) => {
     return (
-        <div className="flex">
+        <div className="pt-4">
             <div>
-                <div className="title font-bold uppercase pb-1 pt-4">Work Experience:</div>
+                <div className="title font-bold uppercase bg-blue-100 block pl-2">Work Experience:</div>
                 {
                     Object.values(experience.description).map((value, id) => (
-                        <p className="pl-8" key={id}>
+                        (value.trim() !== '' && <p className="pl-8 mt-1" key={id}>
                             {value}
-                        </p>
+                        </p>)
                     ))
                 }
             </div>
@@ -145,14 +137,14 @@ const Experience = ({ experience }) => {
 }
 const Certification = ({ certification }) => {
     return (
-        <div className="flex">
+        <div className="pt-4">
             <div>
-                <div className="title font-bold uppercase pb-1 pt-4">certification:</div>
+                <div className="title font-bold uppercase bg-blue-100 block pl-2">certification:</div>
                 {
                     Object.values(certification.description).map((value, id) => (
-                        <p className="pl-8" key={id}>
+                        (value.trim() !== '' && <p className="pl-8 mt-1" key={id}>
                             {value}
-                        </p>
+                        </p>)
                     ))
                 }
             </div>
@@ -161,19 +153,19 @@ const Certification = ({ certification }) => {
 }
 const AddSections = ({ add_section }) => {
     return (
-        <div className="flex">
+        <div className="">
             <div>
                 {
                     Object.entries(add_section).map(([key1, value1]) => (
                         key1 !== "enable" ?
                             ((value1.section_name).trim() !== '' &&
-                                <div key={key1}>
+                                <div key={key1} className="pt-4">
                                     {Object.entries(value1).map(([section, desc]) => (
-                                        <div key={section}>
+                                        <div key={section} >
                                             {section === 'section_name' &&
-                                                <div className="title font-bold uppercase pb-1 pt-4">{`${desc ? desc + ':' : ''}`}</div>}
+                                                <span className="title font-bold uppercase bg-blue-100 block pl-2">{`${desc ? desc + ':' : ''}`}</span>}
                                             {section !== 'section_name' &&
-                                                <p className="pl-8">
+                                                <p className="pl-8 mt-1">
                                                     {desc}
                                                 </p>}
                                         </div>
@@ -188,10 +180,10 @@ const AddSections = ({ add_section }) => {
 }
 const Declaration = () => {
     return (
-        <div className="flex">
+        <div className="pt-4">
             <div>
-                <div className="title font-bold uppercase pb-1 pt-4">declaration:</div>
-                <p className="lg:text-base sm:text-sm">
+                <div className="title font-bold uppercase bg-blue-100 block pl-2">declaration:</div>
+                <p className="lg:text-base sm:text-sm mt-2 pl-2">
                     I hereby declare that the above mentioned particulars are true and genuine to the best
                     of my knowledge and belief.
                 </p>
@@ -200,21 +192,20 @@ const Declaration = () => {
     )
 }
 
-class Template3 extends React.Component {
+class Template2 extends React.Component {
     render() {
         const { objective, profile, address, contact, qualification, image,
             skills, experience, certification, add_section, declaration } = this.props.resume
         return (
             <React.Fragment>
-                <Contact image={image} />
+                <Contact contact={contact} image={image} name={profile.name} />
                 <Objective objective={objective} />
-                <ProfileAndAddress contact={contact} profile={profile} address={address} />
                 <Qualification qualification={qualification} />
                 {experience.enable && <Experience experience={experience} />}
-                {skills.enable && <Skills skills={skills} />}
-                <Address address={address} />
                 {certification.enable && <Certification certification={certification} />}
+                {skills.enable && <Skills skills={skills} />}
                 {add_section.enable && <AddSections add_section={add_section} />}
+                <ProfileAndAddress profile={profile} address={address} />
                 <Declaration declaration={declaration} />
             </React.Fragment>
         )
@@ -225,4 +216,4 @@ const mapStateToProps = ({ resume }) => ({
     resume
 })
 
-export default connect(mapStateToProps)(Template3)
+export default connect(mapStateToProps)(Template2)

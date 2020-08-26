@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addData } from '../../../redux/actions'
-import FormInput from '../../Shared/FormInput'
-import Header from '../../Shared/Header'
+import { addDataPro } from '../../../../redux/proResume/actions'
+import TextArea from '../../../Shared/TextArea'
+import Header from '../../../Shared/Header'
 
 export default function OtherHoc(WrappedComponent, componentName) {
     class WithTabs extends Component {
@@ -10,12 +10,12 @@ export default function OtherHoc(WrappedComponent, componentName) {
             [componentName]: this.props[componentName]
         }
         onHandleChange = e => {
-            const { name, value } = e.target
+            const { value } = e.target
             this.setState({
-                [componentName]: { ...this.state[componentName], [name]: value }
+                [componentName]: value
             }, () => {
                 const value = this.state[componentName]
-                this.props.addData({ section: componentName, value })
+                this.props.addDataPro({ section: componentName, value })
             })
         }
         render() {
@@ -25,22 +25,19 @@ export default function OtherHoc(WrappedComponent, componentName) {
                     <Header label={componentName} onclick={e => this.props.toggle(e, componentName)} />
                     {this.props.show === `${componentName}` ?
                         <div className="pt-2 pb-10">
-                            {Object.entries(data).map(([key, value]) => (
-                                <FormInput type="text" label={key}
-                                    name={key} onHandleChange={this.onHandleChange}
-                                    placeholder={key} value={value} key={key} />
-                            ))}
+                            <TextArea name={componentName} onHandleChange={this.onHandleChange}
+                                placeholder={componentName} value={data} height='30vh' />
                         </div>
                         : null}
                 </WrappedComponent>
             )
         }
     }
-    const mapStateToProps = ({ resume }) => ({
-        [componentName]: resume[componentName]
+    const mapStateToProps = ({ proResume }) => ({
+        [componentName]: proResume[componentName]
     })
     const mapDispatchToProps = (dispatch) => ({
-        addData: data => dispatch(addData(data))
+        addDataPro: data => dispatch(addDataPro(data))
     })
     return connect(mapStateToProps, mapDispatchToProps)(WithTabs)
 }

@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 import uuid from 'react-uuid'
 
-import { addData } from '../../../redux/actions'
-import FormInput from '../../Shared/FormInput'
-import Header from '../../Shared/Header'
-import RemoveInputField from '../../Utils/RemoveInputField'
-import Checkbox from '../../Shared/Checkbox'
+import { addDataPro } from '../../../../redux/proResume/actions'
+import FormInput from '../../../Shared/FormInput'
+import Header from '../../../Shared/Header'
+import RemoveInputField from '../../../Utils/RemoveInputField'
+import Checkbox from '../../../Shared/Checkbox'
 
 class AddMoreSection extends Component {
     state = {
@@ -19,7 +19,7 @@ class AddMoreSection extends Component {
             add_section: { ...this.state.add_section, [key]: { ...this.state.add_section[key], section_name: value } }
         }, () => {
             const value = this.state.add_section
-            this.props.addData({ section: 'add_section', value })
+            this.props.addDataPro({ section: 'add_section', value })
         })
     }
     onChangeAddDescription = (e, section, description) => {
@@ -31,7 +31,7 @@ class AddMoreSection extends Component {
             }
         }, () => {
             const value = this.state.add_section
-            this.props.addData({ section: 'add_section', value })
+            this.props.addDataPro({ section: 'add_section', value })
         })
     }
     appendSection = () => {
@@ -56,7 +56,7 @@ class AddMoreSection extends Component {
                 add_section: updatedInputs
             }, () => {
                 const value = this.state.add_section
-                this.props.addData({ section: 'add_section', value })
+                this.props.addDataPro({ section: 'add_section', value })
             })
         } else {
             alert('Need to keep atleast one field')
@@ -69,7 +69,7 @@ class AddMoreSection extends Component {
                 add_section: { ...this.state.add_section, [section]: updatedInputs }
             }, () => {
                 const value = this.state.add_section
-                this.props.addData({ section: 'add_section', value })
+                this.props.addDataPro({ section: 'add_section', value })
             })
         } else {
             alert('Need to keep atleast one field')
@@ -81,7 +81,7 @@ class AddMoreSection extends Component {
             [key]: { ...this.state[key], enable: en }
         }, () => {
             const value = this.state[key]
-            this.props.addData({ section: key, value })
+            this.props.addDataPro({ section: key, value })
             if (en) {
                 toast.success(`${[key]} added.`, {
                     bodyClassName: 'text-center text-black-800 py-1',
@@ -129,10 +129,10 @@ class AddMoreSection extends Component {
         )
     }
 }
-const mapStateToProps = ({ resume }) => ({
-    add_section: resume.add_section
+const mapStateToProps = ({ proResume }) => ({
+    add_section: proResume.add_section
 })
 const mapDispatchToProps = (dispatch) => ({
-    addData: data => dispatch(addData(data))
+    addDataPro: data => dispatch(addDataPro(data))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(AddMoreSection)

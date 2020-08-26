@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addData } from '../../../redux/actions'
-import Header from '../../Shared/Header'
-import Checkbox from '../../Shared/Checkbox'
+import { addDataPro } from '../../../../redux/proResume/actions'
+import Header from '../../../Shared/Header'
+import Checkbox from '../../../Shared/Checkbox'
 
 class SetImage extends Component {
     state = {
@@ -16,7 +16,7 @@ class SetImage extends Component {
                 image: { ...this.state.image, source: reader.result }
             }, () => {
                 const value = this.state.image
-                this.props.addData({ section: 'image', value })
+                this.props.addDataPro({ section: 'image', value })
             })
         })
         reader.readAsDataURL(e.target.files[0])
@@ -27,7 +27,7 @@ class SetImage extends Component {
             image: { ...this.state.image, enable: en }
         }, () => {
             const value = this.state.image
-            this.props.addData({ section: "image", value })
+            this.props.addDataPro({ section: "image", value })
         })
     }
     render() {
@@ -47,10 +47,10 @@ class SetImage extends Component {
         )
     }
 }
-const mapStateToProps = ({ resume }) => ({
-    image: resume.image
+const mapStateToProps = ({ proResume }) => ({
+    image: proResume.image
 })
 const mapDispatchToProps = (dispatch) => ({
-    addData: data => dispatch(addData(data))
+    addDataPro: data => dispatch(addDataPro(data))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(SetImage)

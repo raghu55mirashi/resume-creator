@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addData } from '../../../redux/actions'
-import TextArea from '../../Shared/TextArea'
-import Header from '../../Shared/Header'
+import { addData } from '../../../../redux/basicResume/actions'
+import TextArea from '../../../Shared/TextArea'
+import Header from '../../../Shared/Header'
 
 class Objective extends Component {
     state = {

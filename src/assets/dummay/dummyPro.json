@@ -1,0 +1,118 @@
+{
+  "summary": "Overall 1 year 7 months of experience in IT industry as Developer. Developed and deployed quality of websites and applications. Proficient in JavaScript, Reactjs, Django RESTAPIs",
+  "objective": "To obtain a job within my chosen field that will challenge me and allow me to use my education, skills and past experiences in a way that is mutually beneficial to both myself and my employer and allow for future growth and advancement.",
+  "image": {
+    "enable": true,
+    "source": ""
+  },
+  "profile": {
+    "name": "John Doe",
+    "date_of_birth": "05-01-1999",
+    "gender": "male",
+    "languages": "English, Hindi",
+    "current_location": "pune, Maharashtra",
+    "current_designation": "jr.frontend developer"
+  },
+  "address": "Hno:777, At:ABC, Pune, Maharashtra, India",
+  "contact": {
+    "cell": "545454545",
+    "email": "demo@gmail.com",
+    "github": "github.com/demo",
+    "linkedIn": "https://www.linkedin.com/in/demo1/"
+  },
+  "skills": {
+    "programming_languages": "javascript, python, php",
+    "frameworks-libraries": "react, django, php",
+    "tools-technologies": "git, aws, Linux",
+    "soft_skills": "team player, self learner"
+  },
+  "qualification": {
+    "item-0": {
+      "degree": "Bachelor of Engineering in Computer Science",
+      "university": "VTU",
+      "duration": "2016-2019",
+      "place": "Belgaum"
+    },
+    "item-1": {
+      "degree": "Diploma in Computer Science",
+      "university": "VTU",
+      "duration": "2013-2016",
+      "place": "Belgaum"
+    }
+  },
+  "references": {
+    "enable": true,
+    "item-0": {
+      "name": "John",
+      "phone": "6401122014",
+      "email": "test@gmail.com"
+    },
+    "item-1": {
+      "name": "Michel",
+      "phone": "6401122014",
+      "email": "test@gmail.com"
+    }
+  },
+  "experience": {
+    "enable": true,
+    "item-0": {
+      "designation": "Jr.Software Developer",
+      "company": "ABC pvt ltd",
+      "duration": "2018-2019",
+      "place": "pune",
+      "tools_tech": "React, Django",
+      "duties": "Responsible for front-end development."
+    },
+    "item-1": {
+      "designation": "Jr.Software Developer",
+      "company": "ABC pvt ltd",
+      "duration": "2019-2020",
+      "place": "pune",
+      "tools_tech": "React, Django",
+      "duties": "Responsible for back-end development."
+    }
+  },
+  "projects": {
+    "enable": true,
+    "item-0": {
+      "project_name": "Nebhub",
+      "company": "ABC pvt ltd",
+      "duration": "2019-2020",
+      "place": "pune",
+      "team_size": "6",
+      "role": "frontend developer",
+      "description": "Mcleodracing website Nebhub project developed on djangoREST APIs and Reactjs for frontend."
+    },
+    "item-1": {
+      "project_name": "Nebhub",
+      "company": "XYZ pvt ltd",
+      "duration": "2019-2020",
+      "place": "pune",
+      "team_size": "6",
+      "role": "backend developer",
+      "description": "Mcleodracing website Nebhub project developed on djangoREST APIs and Reactjs for frontend."
+    }
+  },
+  "certification": {
+    "enable": true,
+    "description": {
+      "description-0": "Javascript developer intern certificate"
+    }
+  },
+  "hobbies": {
+    "enable": true,
+    "description": {
+      "description-0": "Watching News"
+    }
+  },
+  "add_section": {
+    "enable": false,
+    "section": {
+      "section_name": "",
+      "description": ""
+    }
+  },
+  "templates": {
+    "template_name": "Template1"
+  }
+}
