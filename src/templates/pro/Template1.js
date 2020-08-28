@@ -11,11 +11,11 @@ const Contact = ({ contact, profile }) => {
                 <div className="pt-3">
                     <div className="float-left">
                         {(contact.cell).trim() !== '' && <span className="text-xs block"><i className="fa fa-phone"></i>{' '}{contact.cell}</span>}
-                        {(profile.current_location).trim() !== '' && <span className="text-xs block"><i className="fa fa-map-marker"></i>{' '}{profile.current_location}</span>}
+                        {(profile.current_location).trim() !== '' && <span className="text-xs block capitalize pl-1"><i className="fa fa-map-marker"></i>{' '}{profile.current_location}</span>}
                     </div>
-                    <div className=" sm:float-left lg:float-right">
+                    <div className="float-right">
                         {(contact.email).trim() !== '' && <span className="text-xs block"><i className="fa fa-at"></i>{' '}{contact.email}</span>}
-                        {(contact.github).trim() !== '' && <span className="text-xs block"><i className="fa fa-link" aria-hidden="true"></i>{' '}{contact.github}</span>}
+                        {(contact.website).trim() !== '' && <span className="text-xs block"><i className="fa fa-link" aria-hidden="true"></i>{' '}{contact.website}</span>}
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@ const Image = ({ image }) => {
 }
 const Summary = ({ summary }) => {
     return (
-        <div className="flex pb-8">
+        <div className="flex">
             <div>
                 <div className=" font-bold uppercase bg-blue-100 block pl-2">summary</div>
                 <p className="text-sm mt-1 pl-2">
@@ -47,7 +47,7 @@ const Summary = ({ summary }) => {
 }
 const Skills = ({ skills }) => {
     return (
-        <div className="pb-6">
+        <div className="">
             <div className="title font-bold uppercase bg-blue-100 block pl-2">skills</div>
 
             {Object.keys(skills).map((skill, id) => (
@@ -67,12 +67,12 @@ const Skills = ({ skills }) => {
 }
 const Experience = ({ experience }) => {
     return (
-        <div className="pb-4">
+        <div className="pt-8">
             <div className="title font-bold uppercase bg-blue-100 block pl-2">Experience</div>
             {
                 Object.keys(experience).map((key1, value1) => (
                     key1 !== "enable" ?
-                        <div key={key1} className={`${(Object.keys(experience).lastIndexOf(key1) !== Object.keys(experience).length - 1) ? 'border-dashed border-gray-600 border-b' : ''} pl-2 pt-2 pb-4 capitalize`}>
+                        <div key={key1} className={`${(Object.keys(experience).lastIndexOf(key1) !== Object.keys(experience).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pl-2 pt-2 capitalize`}>
                             {(experience[key1].designation).trim() !== '' && <h4 className=" font-normal">{experience[key1].designation}</h4>}
                             {(experience[key1].company).trim() !== '' && <span className=" font-semibold text-sm">{experience[key1].company}</span>}
                             <div className="text-xs">
@@ -101,12 +101,12 @@ const Experience = ({ experience }) => {
 }
 const Projects = ({ projects }) => {
     return (
-        <div className="pb-6">
+        <div className="pt-8">
             <div className="title font-bold uppercase bg-blue-100 block pl-2">projects</div>
             {
                 Object.keys(projects).map((key1, value1) => (
                     key1 !== "enable" ?
-                        <div key={key1} className={`${(Object.keys(projects).lastIndexOf(key1) !== Object.keys(projects).length - 1) ? 'border-dashed border-gray-600 border-b' : ''} pl-2 pt-2 pb-4 capitalize`}>
+                        <div key={key1} className={`${(Object.keys(projects).lastIndexOf(key1) !== Object.keys(projects).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pl-2 pt-2 capitalize`}>
                             {(projects[key1].project_name).trim() !== '' && <h4 className=" font-normal">{projects[key1].project_name}</h4>}
                             {(projects[key1].company).trim() !== '' && <span className=" font-semibold text-sm">{projects[key1].company}</span>}
                             <div className="text-xs">
@@ -144,16 +144,16 @@ const Projects = ({ projects }) => {
 }
 const Qualification = ({ qualification }) => {
     return (
-        <div className="pb-6">
+        <div className="pt-8">
             <div className="title font-bold uppercase bg-blue-100 block pl-2">qualification</div>
             {
                 Object.keys(qualification).map((key1, value1) => (
-                    <div key={key1} className={`${(Object.keys(qualification).lastIndexOf(key1) !== Object.keys(qualification).length - 1) ? 'border-dashed border-gray-600 border-b' : ''} pl-2 pt-2 pb-4 capitalize`}>
+                    <div key={key1} className={`${(Object.keys(qualification).lastIndexOf(key1) !== Object.keys(qualification).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pl-2 pt-2 capitalize`}>
                         {(qualification[key1].degree).trim() !== '' && <h4 className=" font-normal">{qualification[key1].degree}</h4>}
                         {(qualification[key1].university).trim() !== '' && <span className=" font-semibold text-sm">{qualification[key1].university}</span>}
                         <div className="text-xs">
                             {(qualification[key1].duration).trim() !== '' && <span className="pr-5"><i className="fa fa-calendar"></i>{' '}{qualification[key1].duration}</span>}
-                            {(qualification[key1].place).trim() !== '' && <span><i className="fa fa-map-marker"></i>{' '}{qualification[key1].place}</span>}
+                            {(qualification[key1].grade).trim() !== '' && <span className="pr-5">Grade:{' '}{qualification[key1].grade}</span>}
                         </div>
                     </div>
                 ))
@@ -162,9 +162,9 @@ const Qualification = ({ qualification }) => {
         </div>
     )
 }
-const PersonalInfo = ({ profile, address, linkedIn }) => {
+const PersonalInfo = ({ profile, address, contact }) => {
     return (
-        <div className="pb-6">
+        <div className="pt-8">
             <div className="title font-bold uppercase bg-blue-100 block pl-2">Personal Info</div>
             <div className='pl-2 pt-2 pb-4 text-sm capitalize'>
                 {(profile.date_of_birth).trim() !== '' &&
@@ -187,10 +187,15 @@ const PersonalInfo = ({ profile, address, linkedIn }) => {
                         <h4 className="font-medium">Address</h4>
                         <address>{address}</address>
                     </div>}
-                {linkedIn.trim() !== '' &&
+                {contact.linkedIn.trim() !== '' &&
                     <div className="pb-3 border-dashed border-gray-600 border-b">
                         <h4 className="font-medium">LinkedIn</h4>
-                        <span className="">{linkedIn}</span>
+                        <span className="break-words lowercase">{contact.linkedIn}</span>
+                    </div>}
+                {contact.github.trim() !== '' &&
+                    <div className="pb-3 border-dashed border-gray-600 border-b">
+                        <h4 className="font-medium">Github</h4>
+                        <span className="break-words lowercase">{contact.github}</span>
                     </div>}
             </div>
         </div>
@@ -198,7 +203,7 @@ const PersonalInfo = ({ profile, address, linkedIn }) => {
 }
 const Certification = ({ certification }) => {
     return (
-        <div className="pb-6">
+        <div className="pt-8">
             <div>
                 <div className="title font-bold uppercase bg-blue-100 block pl-2">certification</div>
                 {
@@ -214,7 +219,7 @@ const Certification = ({ certification }) => {
 }
 const References = ({ references }) => {
     return (
-        <div className="pb-4">
+        <div className="pt-8">
             <div className="title font-bold uppercase bg-blue-100 block pl-2">References</div>
             {
                 Object.keys(references).map((key1, value1) => (
@@ -233,7 +238,7 @@ const References = ({ references }) => {
 }
 const Hobbies = ({ hobbies }) => {
     return (
-        <div className="pb-6">
+        <div className="pt-8">
             <div>
                 <div className="title font-bold uppercase bg-blue-100 block pl-2">hobbies</div>
                 {
@@ -250,7 +255,7 @@ const Hobbies = ({ hobbies }) => {
 }
 const AddSections = ({ add_section }) => {
     return (
-        <div className="pb-8">
+        <div className="">
             {
                 Object.entries(add_section).map(([key1, value1]) => (
                     key1 !== "enable" ?
@@ -259,7 +264,7 @@ const AddSections = ({ add_section }) => {
                                 {Object.entries(value1).map(([section, desc]) => (
                                     <div key={section} >
                                         {section === 'section_name' &&
-                                            <span className="title font-bold uppercase bg-blue-100 block pl-2">{desc}</span>}
+                                            <div className="pt-8 "><span className="title font-bold uppercase bg-blue-100 block pl-2">{desc}</span></div>}
                                         {section !== 'section_name' &&
                                             <p className="pl-2 pt-1">
                                                 {desc}
@@ -281,7 +286,7 @@ class Template1 extends React.Component {
             skills, experience, certification, references, hobbies, add_section } = this.props.proResume
         return (
             <React.Fragment>
-                <div className="flex w-full">
+                <div className="flex w-full p-8">
                     <div className=" w-7/12">
                         <Contact contact={contact} profile={profile} />
                         <Summary summary={summary} />
@@ -297,7 +302,7 @@ class Template1 extends React.Component {
                         <Qualification qualification={qualification} />
                         {certification.enable && <Certification certification={certification} />}
                         {hobbies.enable && <Hobbies hobbies={hobbies} />}
-                        <PersonalInfo profile={profile} address={address} linkedIn={contact.linkedIn} />
+                        <PersonalInfo profile={profile} address={address} contact={contact} />
                     </div>
                 </div>
             </React.Fragment>

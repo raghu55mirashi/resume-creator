@@ -17,6 +17,7 @@
   "contact": {
     "cell": "545454545",
     "email": "demo@gmail.com",
+    "website": "test.github.io",
     "github": "github.com/demo",
     "linkedIn": "https://www.linkedin.com/in/demo1/"
   },
@@ -31,13 +32,13 @@
       "degree": "Bachelor of Engineering in Computer Science",
       "university": "VTU",
       "duration": "2016-2019",
-      "place": "Belgaum"
+      "grade": "First"
     },
     "item-1": {
       "degree": "Diploma in Computer Science",
       "university": "VTU",
       "duration": "2013-2016",
-      "place": "Belgaum"
+      "grade": "First"
     }
   },
   "references": {
@@ -113,6 +114,8 @@
     }
   },
   "templates": {
-    "template_name": "Template1"
+    "template_name": "Template1",
+    "bgcolor": "#e2e8f0",
+    "fontColor": "#000"
   }
 }

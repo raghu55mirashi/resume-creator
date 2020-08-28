@@ -197,7 +197,7 @@ class Template2 extends React.Component {
         const { objective, profile, address, contact, qualification, image,
             skills, experience, certification, add_section, declaration } = this.props.resume
         return (
-            <React.Fragment>
+            <div className="p-10">
                 <Contact contact={contact} image={image} name={profile.name} />
                 <Objective objective={objective} />
                 <Qualification qualification={qualification} />
@@ -207,7 +207,7 @@ class Template2 extends React.Component {
                 {add_section.enable && <AddSections add_section={add_section} />}
                 <ProfileAndAddress profile={profile} address={address} />
                 <Declaration declaration={declaration} />
-            </React.Fragment>
+            </div>
         )
     }
 }

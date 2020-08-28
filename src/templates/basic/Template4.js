@@ -173,7 +173,7 @@ class Template4 extends React.Component {
         const { objective, profile, address, contact, qualification, image,
             skills, experience, certification, add_section, declaration } = this.props.resume
         return (
-            <React.Fragment>
+            <div className="p-10">
                 <Contact contact={contact} image={image} name={profile.name} />
 
                 <Objective objective={objective} />
@@ -185,7 +185,7 @@ class Template4 extends React.Component {
                 <Profile profile={profile} />
                 <Address address={address} />
                 <Declaration declaration={declaration} />
-            </React.Fragment>
+            </div>
         )
     }
 }

@@ -27,7 +27,7 @@ export default function ProQualExp(WrappedComponent, componentName, enable = fal
             let newInputs = `item-${uuid()}`
             var data;
             if (componentName === 'qualification') {
-                data = { degree: '', university: '', duration: '', place: '' }
+                data = { degree: '', university: '', duration: '', percentage: '', place: '' }
             }
             if (componentName === 'experience') {
                 data = { designation: '', company: '', duration: '', place: '', tools_tech: '', duties: '' }

@@ -24,9 +24,9 @@ const Profile = ({ profile, contact }) => {
                     {
                         Object.entries(profile).map(([key, value]) => (
                             (value.trim() !== '' && <tr key={key}>
-                                <td className="align-top pt-2 uppercase text-sm">{key.split('_').join(' ')}</td>
-                                <td className="px-12 align-top pt-2">:</td>
-                                <td className="pt-2 align-top capitalize">
+                                <td className="align-top pt-1 uppercase text-sm">{key.split('_').join(' ')}</td>
+                                <td className="px-12 align-top pt-1">:</td>
+                                <td className="pt-1 align-top capitalize">
                                     {value}</td>
                             </tr>)
                         ))
@@ -54,7 +54,7 @@ const Address = ({ address }) => {
             <p className="font-bold pt-4 uppercase">Address:</p>
             <table >
                 <thead></thead>
-                <tbody className="grid grid-cols-2 ">
+                <tbody className="grid grid-cols-3 ">
                     {
                         Object.entries(address).map(([key, value]) => (
                             (value.trim() !== '' && <tr key={key}>
@@ -205,7 +205,7 @@ class Template3 extends React.Component {
         const { objective, profile, address, contact, qualification, image,
             skills, experience, certification, add_section, declaration } = this.props.resume
         return (
-            <React.Fragment>
+            <div className="py-8 px-10">
                 <Contact image={image} />
                 <Objective objective={objective} />
                 <ProfileAndAddress contact={contact} profile={profile} address={address} />
@@ -216,7 +216,7 @@ class Template3 extends React.Component {
                 {certification.enable && <Certification certification={certification} />}
                 {add_section.enable && <AddSections add_section={add_section} />}
                 <Declaration declaration={declaration} />
-            </React.Fragment>
+            </div>
         )
     }
 }

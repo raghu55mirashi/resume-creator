@@ -4,12 +4,15 @@ import photo from '../../assets/image/user.JPG'
 
 const Contact = ({ contact, profile }) => {
     return (
-        <div className="flex pt-2">
-            <div className="float-left">
-                {(contact.cell).trim() !== '' && <span className="pt-2 text-xs block"><i className="fa fa-phone"></i>{' '}{contact.cell}</span>}
-                {(contact.email).trim() !== '' && <span className="pt-2 text-xs block"><i className="fa fa-at"></i>{' '}{contact.email}</span>}
-                {(contact.website).trim() !== '' && <span className="pt-2 text-xs block"><i className="fa fa-link" aria-hidden="true"></i>{' '}{contact.website}</span>}
-                {(profile.current_location).trim() !== '' && <span className="pt-2 text-xs block pl-1 capitalize"><i className="fa fa-map-marker"></i>{' '}{profile.current_location}</span>}
+        <div className="pt-4">
+            <div className="title bg-gray-700 font-bold uppercase block pl-8">Contact</div>
+            <div className="flex pt-2 pl-8">
+                <div className="float-left">
+                    {(contact.cell).trim() !== '' && <span className="text-xs block"><i className="fa fa-phone"></i>{' '}{contact.cell}</span>}
+                    {(contact.email).trim() !== '' && <span className="pt-2 text-xs block"><i className="fa fa-at"></i>{' '}{contact.email}</span>}
+                    {(contact.website).trim() !== '' && <span className="pt-2 text-xs block break-words"><i className="fa fa-link" aria-hidden="true"></i>{' '}{contact.website}</span>}
+                    {(profile.current_location).trim() !== '' && <span className="pt-2 text-xs block pl-1 capitalize"><i className="fa fa-map-marker"></i>{' '}{profile.current_location}</span>}
+                </div>
             </div>
         </div>
     )
@@ -17,20 +20,18 @@ const Contact = ({ contact, profile }) => {
 const Image = ({ image }) => {
     const img = image.source ? image.source : photo;
     return (
-        <div className="flex justify-center overflow-hidden ">
+        <div className="flex justify-center overflow-hidden pl-4">
             <div className=" lg:h-40 sm:h-24 pr-4">
                 {image.enable && <img src={img} alt="pic" id="photo" className="h-40 w-40  rounded-full object-center" />}
             </div>
         </div>
     )
 }
-const Objective = ({ objective, profile }) => {
+const Objective = ({ objective }) => {
     return (
         <div className="flex">
             <div>
-                <div className="curriculum uppercase font-bold lg:text-2xl pt-1">{profile.name}</div>
-                <div className="capitalize font-bold">{profile.current_designation}</div>
-                <p className="text-sm mt-1 border-solid border-gray-600 border-t">
+                <p className="text-sm mt-1 ">
                     {objective}
                 </p>
             </div>
@@ -40,12 +41,12 @@ const Objective = ({ objective, profile }) => {
 const Skills = ({ skills }) => {
     return (
         <div className="pt-8">
-            <div className="title font-bold uppercase border-solid border-gray-600 border-b-2 block">skills</div>
+            <div className="title bg-gray-700 font-bold uppercase block pl-8">skills</div>
 
             {Object.keys(skills).map((skill, id) => (
                 <span key={id}>
                     {(skills[skill].trim()).length > 1 &&
-                        <div className={`${(Object.keys(skills).lastIndexOf(skill) !== Object.keys(skills).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pt-2  capitalize`}>
+                        <div className={`${(Object.keys(skills).lastIndexOf(skill) !== Object.keys(skills).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pt-2 pl-8 pr-4  capitalize`}>
                             <h4 className=" font-normal pb-2">{skill.split('_').join(' ')}</h4>
 
                             {skills[skill].split(',').map(k => (
@@ -60,7 +61,7 @@ const Skills = ({ skills }) => {
 const Experience = ({ experience }) => {
     return (
         <div className="pt-8">
-            <div className="title font-bold uppercase border-solid border-gray-600 border-b-2 block">Experience</div>
+            <div className="title font-bold uppercase border-solid border-gray-600 border-b border-t block">Experience</div>
             {
                 Object.keys(experience).map((key1, value1) => (
                     key1 !== "enable" ?
@@ -94,7 +95,7 @@ const Experience = ({ experience }) => {
 const Projects = ({ projects }) => {
     return (
         <div className="pt-8">
-            <div className="title font-bold uppercase border-solid border-gray-600 border-b-2 block">projects</div>
+            <div className="title font-bold uppercase border-solid border-gray-600 border-b border-t block">projects</div>
             {
                 Object.keys(projects).map((key1, value1) => (
                     key1 !== "enable" ?
@@ -137,10 +138,10 @@ const Projects = ({ projects }) => {
 const Qualification = ({ qualification }) => {
     return (
         <div className="pt-8">
-            <div className="title font-bold uppercase border-solid border-gray-600 border-b-2 block">qualification</div>
+            <div className="title bg-gray-700 font-bold uppercase block pl-8">qualification</div>
             {
                 Object.keys(qualification).map((key1, value1) => (
-                    <div key={key1} className={`${(Object.keys(qualification).lastIndexOf(key1) !== Object.keys(qualification).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pt-2  capitalize`}>
+                    <div key={key1} className={`${(Object.keys(qualification).lastIndexOf(key1) !== Object.keys(qualification).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pt-2 pl-8 pr-4  capitalize`}>
                         {(qualification[key1].degree).trim() !== '' && <h4 className=" font-normal">{qualification[key1].degree}</h4>}
                         {(qualification[key1].university).trim() !== '' && <span className=" font-semibold text-sm">{qualification[key1].university}</span>}
                         <div className="text-xs">
@@ -157,35 +158,35 @@ const Qualification = ({ qualification }) => {
 const PersonalInfo = ({ profile, address, contact }) => {
     return (
         <div className="pt-8">
-            <div className="title font-bold uppercase border-solid border-gray-600 border-b-2 block">Personal Info</div>
+            <div className="title bg-gray-700 font-bold uppercase block pl-8">Personal Info</div>
             <div className='pb-4 text-sm capitalize'>
                 {(profile.date_of_birth).trim() !== '' &&
-                    <div className="pb-3  pt-2  border-dashed border-gray-600 border-b">
+                    <div className="pb-3  pt-2 pl-8  border-dashed border-gray-600 border-b">
                         <h4 className="font-medium">Date of Birth</h4>
                         <h4>{profile.date_of_birth}</h4>
                     </div>}
                 {(profile.gender).trim() !== '' &&
-                    <div className="pb-3 pt-2  border-dashed border-gray-600 border-b">
+                    <div className="pb-3 pt-2 pl-8  border-dashed border-gray-600 border-b">
                         <h4 className="font-medium">Gender</h4>
                         <span className="">{profile.gender}</span>
                     </div>}
                 {(profile.languages).trim() !== '' &&
-                    <div className="pb-3 pt-2  border-dashed border-gray-600 border-b">
+                    <div className="pb-3 pt-2 pl-8  border-dashed border-gray-600 border-b">
                         <h4 className="font-medium">Languages Known</h4>
                         <span className="">{profile.languages}</span>
                     </div>}
                 {address.trim() !== '' &&
-                    <div className="pb-3 pt-2  border-dashed border-gray-600 border-b">
+                    <div className="pb-3 pt-2 pl-8  border-dashed border-gray-600 border-b">
                         <h4 className="font-medium">Address</h4>
                         <address>{address}</address>
                     </div>}
                 {contact.linkedIn.trim() !== '' &&
-                    <div className="pb-3 pt-2  border-dashed border-gray-600 border-b">
+                    <div className="pb-3 pt-2 pl-8  border-dashed border-gray-600 border-b">
                         <h4 className="font-medium">LinkedIn</h4>
                         <span className="break-words lowercase">{contact.linkedIn}</span>
                     </div>}
                 {contact.github.trim() !== '' &&
-                    <div className="pb-3 pt-2  border-dashed border-gray-600 border-b">
+                    <div className="pb-3 pt-2 pl-8  border-dashed border-gray-600 border-b">
                         <h4 className="font-medium">Github</h4>
                         <span className="break-words lowercase">{contact.github}</span>
                     </div>}
@@ -197,10 +198,10 @@ const Certification = ({ certification }) => {
     return (
         <div className="pt-8">
             <div>
-                <div className="title font-bold uppercase border-solid border-gray-600 border-b-2 block">certification</div>
+                <div className="title bg-gray-700 font-bold uppercase block pl-8">certification</div>
                 {
                     Object.values(certification.description).map((value, id) => (
-                        (value.trim() !== '' && <p className="pl-4 mt-1" key={id}>
+                        (value.trim() !== '' && <p className="pl-8 mt-1" key={id}>
                             <i className='fa fa-caret-right'></i>{' '}{value}
                         </p>)
                     ))
@@ -212,7 +213,7 @@ const Certification = ({ certification }) => {
 const References = ({ references }) => {
     return (
         <div className="pt-8">
-            <div className="title font-bold uppercase border-solid border-gray-600 border-b-2 block">References</div>
+            <div className="title font-bold uppercase border-solid border-gray-600 border-b border-t block">References</div>
             {
                 Object.keys(references).map((key1, value1) => (
                     key1 !== "enable" ?
@@ -232,11 +233,11 @@ const Hobbies = ({ hobbies }) => {
     return (
         <div className="pt-8">
             <div>
-                <div className="title font-bold uppercase border-solid border-gray-600 border-b-2 block">hobbies</div>
+                <div className="title bg-gray-700 font-bold uppercase block pl-8">hobbies</div>
                 {
                     Object.values(hobbies.description).map((value, id) => (
                         (value.trim() !== '' &&
-                            <p className="pl-4 mt-1" key={id}>
+                            <p className="pl-8 mt-1" key={id}>
                                 <i className='fa fa-caret-right'></i>{' '}{value}
                             </p>)
                     ))
@@ -256,7 +257,7 @@ const AddSections = ({ add_section }) => {
                                 {Object.entries(value1).map(([section, desc]) => (
                                     <div key={section} >
                                         {section === 'section_name' &&
-                                            <div className="pt-8"><span className="title font-bold uppercase border-solid border-gray-600 border-b-2 block">{desc}</span></div>}
+                                            <div className="pt-8"><span className="title font-bold uppercase border-solid border-gray-600 border-b border-t block">{desc}</span></div>}
                                         {section !== 'section_name' &&
                                             <p className="pl-2 pt-1">
                                                 {desc}
@@ -271,7 +272,8 @@ const AddSections = ({ add_section }) => {
     )
 }
 
-class Template2 extends React.Component {
+
+class Template3 extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -285,8 +287,12 @@ class Template2 extends React.Component {
         return (
             <React.Fragment>
                 <div className="flex w-full">
-                    <div style={{ backgroundColor: bgcolor, color: fontColor }} className="w-4/12 h-full pl-8 pr-4 py-8">
+                    <div style={{ backgroundColor: bgcolor, color: fontColor }} className="w-4/12 h-full bg-pink-600 py-8 text-white">
                         <Image image={image} />
+                        <div className="pl-8">
+                            <div className="uppercase font-bold lg:text-2xl pt-1">{profile.name}</div>
+                            <div className="capitalize font-bold">{profile.current_designation}</div>
+                        </div>
                         <Contact contact={contact} profile={profile} />
                         <Skills skills={skills} />
                         <Qualification qualification={qualification} />
@@ -312,4 +318,4 @@ const mapStateToProps = ({ proResume }) => ({
     proResume
 })
 
-export default connect(mapStateToProps)(Template2)
+export default connect(mapStateToProps)(Template3)

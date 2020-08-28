@@ -17,7 +17,8 @@ code {
 
 @page {
   size: A4;
-  margin: 2.5em;
+  /* margin: 2.5em; */
+  margin: 0;
 }
 #print-page {
   display: none;
