@@ -61,11 +61,11 @@ class BasicTemp extends Component {
                     <div className="flex pt-2">
                         <label htmlFor="pickbgColor" className='border w-2/4 pb-2 float-left bg-red-500 rounded-sm border-blue-400 border-solid cursor-pointer'>
                             <p className=" text-xs py-2 ">Background Color</p>
-                            <input className="cursor-pointer py-2" id="pickbgColor" type="color" name="pickbgColor" onChange={this.onChangeBgColor} />
+                            <input className="cursor-pointer p-2" id="pickbgColor" type="color" name="pickbgColor" onChange={this.onChangeBgColor} />
                         </label>
                         <label htmlFor="pickFontColor" className='border ml-1 w-2/4 pb-2 float-right bg-blue-600 rounded-sm border-blue-400 border-solid cursor-pointer'>
                             <p className="text-xs py-2">Font Color</p>
-                            <input className="cursor-pointer p-2 bg-black" id="pickFontColor" type="color" name="pickFontColor" onChange={this.onChangeFontColor} />
+                            <input className="cursor-pointer bg-black p-2" id="pickFontColor" type="color" name="pickFontColor" onChange={this.onChangeFontColor} />
                         </label>
                     </div>
                 </RightBoxes>
