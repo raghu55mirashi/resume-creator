@@ -17,8 +17,7 @@ code {
 
 @page {
   size: A4;
-  /* margin: 2.5em; */
-  margin: 0;
+  margin: 15px 12px;
 }
 #print-page {
   display: none;
@@ -43,10 +42,11 @@ code {
     top: 0;
     display: block;
   }
-  #print-page,
+  /* #print-page,
   #print-page * {
-    page-break-inside: avoid;
-  }
+    page-break-inside: auto;
+    break-after: always;
+  } */
   #root,
   #Header,
   #Footer {
@@ -84,5 +84,36 @@ code {
   .extrabtn {
     padding-left: 8px;
     padding-right: 9px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 1px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: green;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #000;
+}
+
+@media screen and (min-width: 1024px) {
+  .left-container {
+    width: 17rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .left-container {
+    width: 17rem;
   }
 }

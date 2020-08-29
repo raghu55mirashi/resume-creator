@@ -27,7 +27,7 @@ class LeftSidebar extends Component {
             myclass = 'drag' //dynamically added to solve mobile view dragging issue
         }
         return (
-            <div className="left-right-container pt-3 shadow-2xl lg:w-64 xl:w-64 md:w-full" >
+            <div className="left-right-container left-container pt-3 shadow-2xl md:w-full" >
                 <Draggable
                     handle=".drag"
                     defaultPosition={{ x: 0, y: 0 }}
@@ -43,8 +43,10 @@ class LeftSidebar extends Component {
                                 className={`${template === 'pro' ? 'border' : 'border-none'}  mx-1 border-solid border-white rounded-sm w-20`}>Pro</button>
                         </div>
 
-                        {template === 'basic' && <BasicSidebar />}
-                        {template === 'pro' && <ProSidebar />}
+                        <div className=" h-screen overflow-auto">
+                            {template === 'basic' && <BasicSidebar />}
+                            {template === 'pro' && <ProSidebar />}
+                        </div>
                     </div>
                 </Draggable>
             </div>
