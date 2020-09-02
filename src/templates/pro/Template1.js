@@ -37,7 +37,7 @@ const Summary = ({ summary }) => {
     return (
         <div className="flex">
             <div>
-                <div className=" font-bold uppercase bg-blue-100 block pl-2">summary</div>
+                <div className="title font-bold uppercase bg-blue-100 block pl-2">summary</div>
                 <p className="text-sm mt-1 pl-2">
                     {summary}
                 </p>

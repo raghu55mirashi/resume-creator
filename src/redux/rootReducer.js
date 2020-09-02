@@ -9,7 +9,7 @@ import { switchResume } from './switchReducer'
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['resume', 'proResume']
+    whitelist: ['resume', 'proResume', 'switchResume']
 }
 
 const rootReducer = combineReducers({

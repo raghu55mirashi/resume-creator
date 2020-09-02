@@ -7,3 +7,7 @@ export const addData = data => ({
 export const resetData = () => ({
     type: actionTypes.RESET_DATA
 })
+export const loadDataBasic = data => ({
+    type: actionTypes.LOAD_DATA_BASIC,
+    payload: data
+})

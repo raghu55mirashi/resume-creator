@@ -290,8 +290,8 @@ class Template3 extends React.Component {
                     <div style={{ backgroundColor: bgcolor, color: fontColor }} className="w-4/12 h-full bg-pink-600 py-8 text-white">
                         <Image image={image} />
                         <div className="pl-8">
-                            <div className="uppercase font-bold lg:text-2xl pt-1">{profile.name}</div>
-                            <div className="capitalize font-bold">{profile.current_designation}</div>
+                            <span className="uppercase font-bold lg:text-2xl pt-1 block">{profile.name}</span>
+                            <span className="capitalize font-bold block">{profile.current_designation}</span>
                         </div>
                         <Contact contact={contact} profile={profile} />
                         <Skills skills={skills} />

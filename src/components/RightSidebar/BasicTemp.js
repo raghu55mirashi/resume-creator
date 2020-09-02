@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import RightBoxes from '../Shared/RightBoxes'
-import { addData } from '../../redux/basicResume/actions'
+import { addData, loadDataBasic } from '../../redux/basicResume/actions'
+import Button from '../Shared/Button'
 import image1 from '../../assets/image/temp1.JPG'
 import image2 from '../../assets/image/temp2.JPG'
 import image3 from '../../assets/image/temp3.JPG'
@@ -20,9 +21,40 @@ class BasicTemp extends Component {
             this.props.selectTemplate({ section: 'templates', value })
         })
     }
+    exportResume = () => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([JSON.stringify(this.props.resume, null, 2)], {
+            type: "json"
+        }));
+        a.setAttribute("download", "ResumeBasic.json");
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+    importResume = () => {
+        const myfile = document.getElementById('myfile1')
+        myfile.click()
+    }
+    onJSONselect = e => {
+        if (e.target.files[0].type === 'application/json') {
+            var reader = new FileReader();
+            reader.readAsText(e.target.files[0]);
+            reader.onload = function () {
+                let data = JSON.parse(reader.result)
+                if (!('projects' in data) && 'profile' in data) {
+                    this.props.loadDataBasic(data)
+                    window.location.reload(true)
+                } else {
+                    alert('Please import Basic Resume json file')
+                }
+            }.bind(this)
+        } else {
+            alert('Please import Basic Resume json file')
+        }
+    }
     render() {
         return (
-            <div className="left-right-container pt-3 shadow-2xl lg:w-64 xl:w-64 md:w-full">
+            <div className=" shadow-2xl lg:w-64 xl:w-64 md:w-full">
                 <RightBoxes title="Basic Templates">
                     <div className="flex pt-2">
                         <div onClick={() => this.selectTemplate('Template1')}
@@ -45,14 +77,26 @@ class BasicTemp extends Component {
                         </div>
                     </div>
                 </RightBoxes>
+                <RightBoxes
+                    title="Import or Export Data!"
+                    description="These actions will import all your data from existing json file
+                        or export as json to save resume for future update.">
+                    <Button color="blue" tooltip="Saves resume in json format" onClickHandle={this.exportResume}>Export</Button>
+
+                    <Button color="blue" tooltip="Select json file to update existing resume" onClickHandle={this.importResume}>Import</Button>
+
+                    <input type="file" id="myfile1" onChange={this.onJSONselect} name="myfile" style={{ display: "none" }} />
+                </RightBoxes>
             </div>
         )
     }
 }
 const mapStateToProps = ({ resume }) => ({
-    template: resume.templates
+    template: resume.templates,
+    resume
 })
 const mapDispatchToProps = dispatch => ({
-    selectTemplate: (data) => dispatch(addData(data))
+    selectTemplate: (data) => dispatch(addData(data)),
+    loadDataBasic: data => dispatch(loadDataBasic(data))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(BasicTemp)

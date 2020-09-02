@@ -11,6 +11,8 @@ const resumeProReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 [action.payload.section]: action.payload.value
             }
+        case actionTypes.LOAD_DATA_PRO:
+            return action.payload
         case actionTypes.RESET_DATA_PRO:
             return data;
         default:

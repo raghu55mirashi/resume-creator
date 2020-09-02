@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  scrollbar-width: thin; /* "auto" or "thin"  */
+  scrollbar-color: blue #e2e8f0; /* scroll thumb & track */
 }
 
 #page {
@@ -42,11 +45,6 @@ code {
     top: 0;
     display: block;
   }
-  /* #print-page,
-  #print-page * {
-    page-break-inside: auto;
-    break-after: always;
-  } */
   #root,
   #Header,
   #Footer {
@@ -70,21 +68,21 @@ code {
 }
 @media screen and (max-width: 360px) {
   p,
-  td {
-    font-size: 0.75rem;
+  td,
+  span,
+  h4 {
+    font-size: 0.75rem !important;
   }
   .title {
     font-size: 12px !important;
   }
-}
-.extrabtn {
-  padding: 0.29rem;
-}
-@media screen and (max-width: 360px) {
   .extrabtn {
     padding-left: 8px;
     padding-right: 9px;
   }
+}
+.extrabtn {
+  padding: 0.29rem;
 }
 
 ::-webkit-scrollbar {
@@ -94,12 +92,13 @@ code {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: tranparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: green;
+  background-color: blue;
+  border-radius: 20px;
 }
 
 /* Handle on hover */

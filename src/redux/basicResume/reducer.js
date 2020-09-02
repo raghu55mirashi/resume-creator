@@ -11,6 +11,8 @@ const resumeReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 [action.payload.section]: action.payload.value
             }
+        case actionTypes.LOAD_DATA_BASIC:
+            return action.payload
         case actionTypes.RESET_DATA:
             return data;
         default:

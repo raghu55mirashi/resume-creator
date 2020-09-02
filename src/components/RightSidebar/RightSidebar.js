@@ -32,35 +32,38 @@ class RightSidebar extends Component {
     render() {
         const { template } = this.props.switchResume
         return (
-            <div className="left-right-container pt-3 shadow-2xl lg:w-64 xl:w-64 md:w-full">
-                <div className="bg-gray-300 rounded shadow flex-wrap sticky top-0">
-                    <div className="text-center pb-2 text-blue-500 ">
+            <div className="left-right-container shadow-2xl lg:w-64 xl:w-64 md:w-full">
+                <div className="bg-gray-300 rounded shadow flex-wrap ">
+                    <div className="text-center z-50 pb-3 pt-1 bg-gray-300 text-blue-500 sticky top-0">
                         <button onClick={() => this.onLoad('basic')}
                             className={`${template === 'basic' ? 'border' : 'border-none'}  mx-1 border-solid border-white rounded-sm w-20`}>Basic</button>
                         <button onClick={() => this.onLoad('pro')}
                             className={`${template === 'pro' ? 'border' : 'border-none'}  mx-1 border-solid border-white rounded-sm w-20`}>Pro</button>
                     </div>
+
                     {template === 'basic' && <BasicTemp />}
                     {template === 'pro' && <ProTemp />}
-                </div>
-                <RightBoxes
-                    title="Information"
-                    description="Changes you make to your resume are saved automatically 
+
+                    <RightBoxes
+                        title="Information"
+                        description="Changes you make to your resume are saved automatically 
                         to your browser's local storage.No data gets out, hence your information 
                         is completely secure." />
-                <RightBoxes
-                    title="Reset Everything!"
-                    description="This action will reset all your data and remove backups made to 
+                    <RightBoxes
+                        title="Reset Everything!"
+                        description="This action will reset all your data and remove backups made to 
                         your browser's local storage as well, so please make sure you have exported 
                         your information before you reset everything.">
-                    <Button color="red" onClickHandle={this.resetResume}>Reset</Button>
-                </RightBoxes>
-                <RightBoxes
-                    title="Source Code"
-                    description="Want to run the project from its source? Are you a developer willing
+                        <Button color="red" onClickHandle={this.resetResume}>Reset</Button>
+                    </RightBoxes>
+                    <RightBoxes
+                        title="Source Code"
+                        description="Want to run the project from its source? Are you a developer willing
                      to contribute to the open-source development of this project? Click the button below.">
-                    <Button color="green" onClickHandle={this.redirectGithub}>GitHub Repo</Button>
-                </RightBoxes>
+                        <Button color="green" onClickHandle={this.redirectGithub}>GitHub Repo</Button>
+                    </RightBoxes>
+                </div>
+
             </div>
         )
     }
