@@ -22,8 +22,8 @@ const Image = ({ image }) => {
     const img = image.source ? image.source : photo;
     return (
         <div className="flex-auto overflow-hidden ">
-            <div className=" text-center lg:h-40 sm:h-24">
-                {image.enable && <img src={img} alt="pic" id="photo" className="h-40 w-40  rounded-full object-center" />}
+            <div className=" text-center lg:h-40 sm:h-24 pt-5 pl-1">
+                {image.enable && <img src={img} alt="pic" id="photo" className="h-32 w-32  rounded-full object-center" />}
             </div>
         </div>
     )
