@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d797e1511206e896cbf6f35681ddc36f",
+    "revision": "7df221794e49ce7ea2cc7614352e70b1",
     "url": "/resume-creator/index.html"
   },
   {
-    "revision": "ace68f140b20c3caf783",
+    "revision": "05eba342e511bec901be",
     "url": "/resume-creator/static/css/2.d34346ea.chunk.css"
   },
   {
-    "revision": "31fb32fbc03f93f73a54",
+    "revision": "0693c9c29634a64009b6",
     "url": "/resume-creator/static/css/main.f63faaed.chunk.css"
   },
   {
-    "revision": "ace68f140b20c3caf783",
-    "url": "/resume-creator/static/js/2.68404c2a.chunk.js"
+    "revision": "05eba342e511bec901be",
+    "url": "/resume-creator/static/js/2.19e5ac55.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/resume-creator/static/js/2.68404c2a.chunk.js.LICENSE.txt"
+    "url": "/resume-creator/static/js/2.19e5ac55.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "31fb32fbc03f93f73a54",
-    "url": "/resume-creator/static/js/main.a2b4b038.chunk.js"
+    "revision": "0693c9c29634a64009b6",
+    "url": "/resume-creator/static/js/main.85a94e0c.chunk.js"
   },
   {
     "revision": "f537985f659992e3ff9a",
@@ -58,6 +58,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0c476e7808d9bf3fc06c68f467e89509",
     "url": "/resume-creator/static/media/tempPro4.0c476e78.JPG"
+  },
+  {
+    "revision": "548e3d253397ab53504bf9330e95b938",
+    "url": "/resume-creator/static/media/tempPro5.548e3d25.JPG"
+  },
+  {
+    "revision": "9c7fcc794c775a463687bfb12fd62feb",
+    "url": "/resume-creator/static/media/tempPro6.9c7fcc79.JPG"
   },
   {
     "revision": "fd4430f20827750d568cb305f3560bb8",
