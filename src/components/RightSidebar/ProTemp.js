@@ -7,6 +7,8 @@ import image1 from '../../assets/image/tempPro1.JPG'
 import image2 from '../../assets/image/tempPro2.JPG'
 import image3 from '../../assets/image/tempPro3.JPG'
 import image4 from '../../assets/image/tempPro4.JPG'
+import image5 from '../../assets/image/tempPro5.JPG'
+import image6 from '../../assets/image/tempPro6.JPG'
 
 class BasicTemp extends Component {
     constructor(props) {
@@ -90,7 +92,16 @@ class BasicTemp extends Component {
                             <img src={image4} alt="" />
                         </div>
                     </div>
-
+                    <div className="flex pt-2">
+                        <div onClick={() => this.selectTemplate('Template5')}
+                            className={`${this.state.template_name === 'Template5' ? 'border-2' : 'border'}  w-2/4 float-left border-blue-400 border-solid cursor-pointer`}>
+                            <img src={image5} alt="" />
+                        </div>
+                        <div onClick={() => this.selectTemplate('Template6')}
+                            className={`${this.state.template_name === 'Template6' ? 'border-2' : 'border'} ml-1 w-2/4 float-right border-blue-400 border-solid cursor-pointer`}>
+                            <img src={image6} alt="" />
+                        </div>
+                    </div>
                 </RightBoxes>
                 <RightBoxes title="Choose color to customise template">
                     <div className="flex pt-2">

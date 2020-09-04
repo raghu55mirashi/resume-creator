@@ -4,6 +4,8 @@ import Template1 from '../../templates/pro/Template1';
 import Template2 from '../../templates/pro/Template2';
 import Template3 from '../../templates/pro/Template3';
 import Template4 from '../../templates/pro/Template4';
+import Template5 from '../../templates/pro/Template5';
+import Template6 from '../../templates/pro/Template6';
 
 class ProResume extends Component {
     renderTemplates = (template) => {
@@ -16,6 +18,10 @@ class ProResume extends Component {
                 return <Template3 />
             case 'Template4':
                 return <Template4 />
+            case 'Template5':
+                return <Template5 />
+            case 'Template6':
+                return <Template6 />
             default:
                 return <Template1 />
         }

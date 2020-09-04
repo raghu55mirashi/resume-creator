@@ -27,7 +27,7 @@ class LeftSidebar extends Component {
             myclass = 'drag' //dynamically added to solve mobile view dragging issue
         }
         return (
-            <div className="left-right-container left-container pt-3 shadow-2xl md:w-full" >
+            <div className="left-right-container left-container shadow-2xl md:w-full" >
                 <Draggable
                     handle=".drag"
                     defaultPosition={{ x: 0, y: 0 }}
@@ -36,7 +36,7 @@ class LeftSidebar extends Component {
                     scale={1}
                 >
                     <div className={`${myclass} z-50 lg:cursor-move bg-gray-300 rounded shadow flex-wrap sticky top-0`}>
-                        <div className="text-center pb-2 text-blue-500 sticky top-0 bg-gray-300">
+                        <div className="text-center pb-2 pt-1 text-blue-500 sticky top-0 bg-gray-300">
                             <button onClick={() => this.onLoad('basic')}
                                 className={`${template === 'basic' ? 'border' : 'border-none'}  mx-1 border-solid border-white rounded-sm w-20`}>Basic</button>
                             <button onClick={() => this.onLoad('pro')}
