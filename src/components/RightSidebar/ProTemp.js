@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import RightBoxes from '../Shared/RightBoxes'
 import { addDataPro, loadDataPro } from '../../redux/proResume/actions'
 import Button from '../Shared/Button'
+import TemplateImage from './TemplateImage'
+
 import image1 from '../../assets/image/tempPro1.JPG'
 import image2 from '../../assets/image/tempPro2.JPG'
 import image3 from '../../assets/image/tempPro3.JPG'
@@ -11,35 +13,66 @@ import image5 from '../../assets/image/tempPro5.JPG'
 import image6 from '../../assets/image/tempPro6.JPG'
 
 class BasicTemp extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            template_name: this.props.template.template_name,
-            bgcolor: this.props.template.bgcolor,
-            fontColor: this.props.template.fontColor
+    state = {
+        template_properties: {
+            selected_template: this.props.template.selected_template,
+            colors: this.props.template.colors
+        },
+        templates: {
+            'Template1': image1,
+            'Template2': image2,
+            'Template3': image3,
+            'Template4': image4,
+            'Template5': image5,
+            'Template6': image6
         }
     }
+
     selectTemplate = (template) => {
-        this.setState({ template_name: template }, () => {
-            const value = this.state
+        this.setState({ template_properties: { ...this.state.template_properties, selected_template: template } }, () => {
+            const value = this.state.template_properties
             this.props.selectTemplate({ section: 'templates', value })
         })
     }
-    onChangeBgColor = e => {
-        this.setState({ bgcolor: e.target.value }, () => {
-            const value = this.state
+    onChangeBgColor = (e, selected_template) => {
+        this.setState({
+            template_properties:
+            {
+                ...this.state.template_properties,
+                colors: {
+                    ...this.state.template_properties.colors,
+                    [selected_template]: {
+                        ...this.state.template_properties.colors[selected_template],
+                        bgcolor: e.target.value
+                    }
+                }
+            }
+        }, () => {
+            const value = this.state.template_properties
             this.props.selectTemplate({ section: 'templates', value })
         })
     }
-    onChangeFontColor = e => {
-        this.setState({ fontColor: e.target.value }, () => {
-            const value = this.state
+    onChangeFontColor = (e, selected_template) => {
+        this.setState({
+            template_properties:
+            {
+                ...this.state.template_properties,
+                colors: {
+                    ...this.state.template_properties.colors,
+                    [selected_template]: {
+                        ...this.state.template_properties.colors[selected_template],
+                        fontColor: e.target.value
+                    }
+                }
+            }
+        }, () => {
+            const value = this.state.template_properties
             this.props.selectTemplate({ section: 'templates', value })
         })
     }
-    exportResume = () => {
+    exportResume = async () => {
         const a = document.createElement("a");
-        a.href = URL.createObjectURL(new Blob([JSON.stringify(this.props.resume, null, 2)], {
+        a.href = await URL.createObjectURL(new Blob([JSON.stringify(this.props.resume, null, 2)], {
             type: "json"
         }));
         a.setAttribute("download", "ResumePro.json");
@@ -55,66 +88,43 @@ class BasicTemp extends Component {
         if (e.target.files[0].type === 'application/json') {
             var reader = new FileReader();
             reader.readAsText(e.target.files[0]);
-            reader.onload = function () {
+            reader.onload = async () => {
                 let data = JSON.parse(reader.result)
                 if ('projects' in data) {
                     this.props.loadDataPro(data)
-                    window.location.reload(true)
+                    window.location.reload()
                 } else {
                     alert('Please import Pro Resume json file')
                 }
-            }.bind(this)
+            }
         } else {
             alert('Please import Pro Resume json file')
         }
     }
     render() {
+        const { templates, template_properties: { selected_template } } = this.state
         return (
             <div className="  ">
                 <RightBoxes title="Pro Templates">
-                    <div className="flex pt-2">
-                        <div onClick={() => this.selectTemplate('Template1')}
-                            className={`${this.state.template_name === 'Template1' ? 'border-2' : 'border'}  w-2/4 float-left border-blue-400 border-solid cursor-pointer`}>
-                            <img src={image1} alt="" />
-                        </div>
-                        <div onClick={() => this.selectTemplate('Template2')}
-                            className={`${this.state.template_name === 'Template2' ? 'border-2' : 'border'} ml-1 w-2/4 float-right border-blue-400 border-solid cursor-pointer`}>
-                            <img src={image2} alt="" />
-                        </div>
-                    </div>
-                    <div className="flex pt-2">
-                        <div onClick={() => this.selectTemplate('Template3')}
-                            className={`${this.state.template_name === 'Template3' ? 'border-2' : 'border'}  w-2/4 float-left border-blue-400 border-solid cursor-pointer`}>
-                            <img src={image3} alt="" />
-                        </div>
-                        <div onClick={() => this.selectTemplate('Template4')}
-                            className={`${this.state.template_name === 'Template4' ? 'border-2' : 'border'} ml-1 w-2/4 float-right border-blue-400 border-solid cursor-pointer`}>
-                            <img src={image4} alt="" />
-                        </div>
-                    </div>
-                    <div className="flex pt-2">
-                        <div onClick={() => this.selectTemplate('Template5')}
-                            className={`${this.state.template_name === 'Template5' ? 'border-2' : 'border'}  w-2/4 float-left border-blue-400 border-solid cursor-pointer`}>
-                            <img src={image5} alt="" />
-                        </div>
-                        <div onClick={() => this.selectTemplate('Template6')}
-                            className={`${this.state.template_name === 'Template6' ? 'border-2' : 'border'} ml-1 w-2/4 float-right border-blue-400 border-solid cursor-pointer`}>
-                            <img src={image6} alt="" />
-                        </div>
+                    <div className="grid grid-cols-2 gap-2 pt-3">
+                        {Object.entries(templates).map(([templateKey, value]) => (
+                            <TemplateImage key={templateKey} selectTemplate={() => this.selectTemplate(templateKey)} selected_template={selected_template} templateKey={templateKey} template={value} />
+                        ))}
                     </div>
                 </RightBoxes>
-                <RightBoxes title="Choose color to customise template">
-                    <div className="flex pt-2">
-                        <label htmlFor="pickbgColor" className='hover:bg-blue-300 border w-2/4 pb-4 float-left bg-blue-400 rounded-sm border-blue-400 border-solid cursor-pointer'>
-                            <p className=" text-xs py-2 ">Background Color</p>
-                            <input className="cursor-pointer p-2" id="pickbgColor" type="color" name="pickbgColor" onChange={this.onChangeBgColor} />
-                        </label>
-                        <label htmlFor="pickFontColor" className='hover:bg-blue-400 border ml-1 w-2/4 pb-2 float-right bg-blue-600 rounded-sm border-blue-400 border-solid cursor-pointer'>
-                            <p className="text-xs py-2">Font Color</p>
-                            <input className="cursor-pointer bg-black p-2" id="pickFontColor" type="color" name="pickFontColor" onChange={this.onChangeFontColor} />
-                        </label>
-                    </div>
-                </RightBoxes>
+                {('Template2' === selected_template || 'Template3' === selected_template || 'Template4' === selected_template) ?
+                    <RightBoxes title="Choose color to customise template">
+                        <div className="flex pt-2">
+                            <label htmlFor="pickbgColor" className='hover:bg-blue-300 border w-2/4 pb-4 float-left bg-blue-400 rounded-sm border-blue-400 border-solid cursor-pointer'>
+                                <p className=" text-xs py-2 ">Background Color</p>
+                                <input className="cursor-pointer p-2" id="pickbgColor" type="color" name="pickbgColor" onChange={(e) => this.onChangeBgColor(e, selected_template)} />
+                            </label>
+                            <label htmlFor="pickFontColor" className='hover:bg-blue-400 border ml-1 w-2/4 pb-2 float-right bg-blue-600 rounded-sm border-blue-400 border-solid cursor-pointer'>
+                                <p className="text-xs py-2">Font Color</p>
+                                <input className="cursor-pointer bg-black p-2" id="pickFontColor" type="color" name="pickFontColor" onChange={(e) => this.onChangeFontColor(e, selected_template)} />
+                            </label>
+                        </div>
+                    </RightBoxes> : null}
                 <RightBoxes
                     title="Import or Export Data!"
                     description="These actions will import all your data from existing json file

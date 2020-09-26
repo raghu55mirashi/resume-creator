@@ -58,6 +58,6 @@
     }
   },
   "templates": {
-    "template_name": "Template1"
+    "selected_template": "Template1"
   }
 }

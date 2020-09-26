@@ -29,7 +29,7 @@ class ProResume extends Component {
     render() {
         return (
             <React.Fragment>
-                {this.renderTemplates(this.props.templates.template_name)}
+                {this.renderTemplates(this.props.templates.selected_template)}
             </React.Fragment>
         )
     }

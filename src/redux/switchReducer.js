@@ -10,7 +10,6 @@ export const switchResume = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case 'CHANGE_TEMP':
             return {
-                ...state,
                 template: action.payload
             }
         default:

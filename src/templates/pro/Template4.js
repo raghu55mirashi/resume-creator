@@ -272,16 +272,10 @@ const AddSections = ({ add_section }) => {
 
 
 class Template4 extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            bgcolor: this.props.proResume.templates.bgcolor
-        }
-    }
     render() {
         const { contact, summary, profile, projects, address, qualification, image,
             skills, experience, certification, references, hobbies, add_section } = this.props.proResume
-        const { bgcolor, fontColor } = this.props.proResume.templates
+        const { bgcolor, fontColor } = this.props.proResume.templates.colors.Template4
         return (
             <React.Fragment>
                 <div className="flex w-full">

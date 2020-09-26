@@ -114,8 +114,20 @@
     }
   },
   "templates": {
-    "template_name": "Template1",
-    "bgcolor": "#e2e8f0",
-    "fontColor": "#000"
+    "selected_template": "Template1",
+    "colors": {
+      "Template2": {
+        "bgcolor": "#e2e8f0",
+        "fontColor": "#000"
+      },
+      "Template3": {
+        "bgcolor": "#a9a7a7",
+        "fontColor": "#000"
+      },
+      "Template4": {
+        "bgcolor": "#f0ebeb",
+        "fontColor": "#000"
+      }
+    }
   }
 }

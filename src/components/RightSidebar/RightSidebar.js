@@ -23,12 +23,12 @@ class RightSidebar extends Component {
         if (c === true) {
             this.props.resetData()
             localStorage.removeItem('persist:root')
-            window.location.reload(true)
+            window.location.reload()
         }
     }
-    redirectGithub = () => {
-        window.open('https://github.com/raghu55mirashi/resume-creator', '_blank')
-    }
+    // redirectGithub = () => {
+    //     window.open('https://github.com/raghu55mirashi/resume-creator', '_blank')
+    // }
     render() {
         const { template } = this.props.switchResume
         return (
@@ -56,12 +56,14 @@ class RightSidebar extends Component {
                         your information before you reset everything.">
                         <Button color="red" onClickHandle={this.resetResume}>Reset</Button>
                     </RightBoxes>
-                    <RightBoxes
-                        title="Source Code"
-                        description="Want to run the project from its source? Are you a developer willing
-                     to contribute to the open-source development of this project? Click the button below.">
-                        <Button color="green" onClickHandle={this.redirectGithub}>GitHub Repo</Button>
-                    </RightBoxes>
+                    {
+                        //     <RightBoxes
+                        //     title="Source Code"
+                        //     description="Want to run the project from its source? Are you a developer willing
+                        //  to contribute to the open-source development of this project? Click the button below.">
+                        //     <Button color="green" onClickHandle={this.redirectGithub}>GitHub Repo</Button>
+                        // </RightBoxes>
+                    }
                 </div>
 
             </div>

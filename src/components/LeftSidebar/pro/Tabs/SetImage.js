@@ -9,7 +9,7 @@ class SetImage extends Component {
         image: this.props.image
     }
 
-    onHandleChange = e => {
+    onHandleChange = async e => {
         const reader = new FileReader()
         reader.addEventListener("load", () => {
             this.setState({
@@ -19,7 +19,7 @@ class SetImage extends Component {
                 this.props.addDataPro({ section: 'image', value })
             })
         })
-        reader.readAsDataURL(e.target.files[0])
+        await reader.readAsDataURL(e.target.files[0])
     }
     onEnable = (e) => {
         const en = e.target.checked
@@ -39,7 +39,7 @@ class SetImage extends Component {
                         <label htmlFor="myfile" className={`transition ease-in duration-700 mt-2 mb-2 pl-3 pr-3 pt-px pb-px hover:bg-black hover:text-white  text-gray-800 font-semibold border border-gray-400 rounded shadow`}>
                             Select Image
                         </label>
-                        <input type="file" id="myfile" className="pb-2 hidden" name="image" onChange={this.onHandleChange} />
+                        <input type="file" id="myfile" accept="image/png, image/jpeg" className="pb-2 hidden" name="image" onChange={this.onHandleChange} />
                         <Checkbox onEnable={e => this.onEnable(e)} enabled={this.state.image.enable} />
                     </div>
                     : null}
