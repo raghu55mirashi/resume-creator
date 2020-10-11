@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
     template: 'pro',
-    theme: false
+    theme: true
 }
 export const changeTemp = data => ({
     type: 'CHANGE_TEMP',
