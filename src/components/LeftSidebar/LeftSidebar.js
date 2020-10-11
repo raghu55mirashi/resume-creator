@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import Draggable from "react-draggable";
 import BasicSidebar from './basic/BasicSidebar'
 import ProSidebar from './pro/ProSidebar'
-import { changeTemp } from '../../redux/switchReducer'
+import { changeTemp, changeTheme } from '../../redux/switchReducer'
+import RightBoxes from '../Shared/RightBoxes'
 
 class LeftSidebar extends Component {
     state = {
@@ -20,7 +21,7 @@ class LeftSidebar extends Component {
         this.setState({ size: window.innerWidth })
     }
     render() {
-        const { template } = this.props.switchResume
+        const { template, theme } = this.props.switchResume
         const { size } = this.state
         var myclass;
         if (size > 500) {
@@ -35,20 +36,33 @@ class LeftSidebar extends Component {
                     grid={[1, 1]}
                     scale={1}
                 >
-                    <div className={`${myclass} z-50 lg:cursor-move bg-gray-300 rounded shadow flex-wrap sticky top-0`}>
-                        <div className="text-center pb-2 pt-1 text-blue-500 sticky top-0 bg-gray-300">
+                    <div className={`${myclass} z-50 lg:cursor-move rounded shadow flex-wrap sticky top-0`} >
+                        <div className={`text-center pb-2 pt-1 text-blue-500 sticky top-0 `} style={{ background: theme ? '#ced4db' : '#18191a' }}>
                             <button onClick={() => this.onLoad('basic')}
                                 className={`${template === 'basic' ? 'border' : 'border-none'}  mx-1 border-solid border-white rounded-sm w-20`}>Basic</button>
                             <button onClick={() => this.onLoad('pro')}
                                 className={`${template === 'pro' ? 'border' : 'border-none'}  mx-1 border-solid border-white rounded-sm w-20`}>Pro</button>
                         </div>
 
-                        <div className=" lg:h-screen md:h-screen overflow-auto">
+                        <div className="rounded overflow-auto mb-1 " style={{ height: `${template === 'pro' ? '77vh' : '54.5vh'}`, background: theme ? '#e2e8f0' : '#242526' }}>
                             {template === 'basic' && <BasicSidebar />}
                             {template === 'pro' && <ProSidebar />}
                         </div>
+                        <RightBoxes>
+                            <label htmlFor="toogleA"
+                                className="flex items-center fixed-bottom cursor-pointer justify-center">
+                                <i className="fa fa-lg fa-moon-o" aria-hidden="true"></i><p className="pr-4 pl-2">Dark Theme</p>
+                                <div className="relative">
+                                    <input id="toogleA" onClick={() => this.props.changeTheme()} type="checkbox" className="hidden" />
+                                    <div className="toggle__line w-6 h-2 bg-gray-400 rounded-full shadow-inner"></div>
+                                    <div className="toggle__dot absolute w-4 h-4 bg-white rounded-full shadow inset-y-0 left-0"></div>
+                                </div>
+                            </label>
+                        </RightBoxes>
                     </div>
                 </Draggable>
+
+
             </div>
         )
     }
@@ -57,6 +71,7 @@ const mapStateToProps = ({ switchResume }) => ({
     switchResume
 })
 const mapDispatchToProps = dispatch => ({
-    changeTemp: data => dispatch(changeTemp(data))
+    changeTemp: data => dispatch(changeTemp(data)),
+    changeTheme: () => dispatch(changeTheme())
 })
 export default connect(mapStateToProps, mapDispatchToProps)(LeftSidebar)

@@ -44,7 +44,7 @@ class Resume extends Component {
                     grid={[1, 1]}
                     scale={1}
                 >
-                    <div className="lg:w-11/12 lg:h-auto xl:w-11/12  xl:h-auto  drag bg-white shadow-2xl rounded-sm cursor-move" id="page">
+                    <div className="lg:w-11/12 lg:h-auto xl:w-11/12  xl:h-auto  drag bg-white shadow-2xl cursor-move" id="page" style={{ borderRadius: 0 }}>
                         {template === 'basic' && <BasicResume />}
                         {template === 'pro' && <ProResume />}
                     </div>

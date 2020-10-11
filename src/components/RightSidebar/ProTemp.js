@@ -106,7 +106,7 @@ class BasicTemp extends Component {
         return (
             <div className="  ">
                 <RightBoxes title="Pro Templates">
-                    <div className="grid grid-cols-2 gap-2 pt-3">
+                    <div className="grid grid-cols-2 gap-2 pt-3" style={{ justifyItems: 'center' }}>
                         {Object.entries(templates).map(([templateKey, value]) => (
                             <TemplateImage key={templateKey} selectTemplate={() => this.selectTemplate(templateKey)} selected_template={selected_template} templateKey={templateKey} template={value} />
                         ))}

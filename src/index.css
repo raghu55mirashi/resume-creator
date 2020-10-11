@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   scrollbar-width: thin; /* "auto" or "thin"  */
-  scrollbar-color: blue #e2e8f0; /* scroll thumb & track */
+  scrollbar-color: #656767; /* scroll thumb & track */
 }
 
 #page {
@@ -97,7 +97,7 @@ code {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: blue;
+  background-color: #656767;
   border-radius: 20px;
 }
 
@@ -115,4 +115,18 @@ code {
   .left-container {
     width: 17rem;
   }
+}
+.shadow-2xl {
+  box-shadow: 0 4px 31px -12px #000;
+}
+
+.toggle__dot {
+  top: -0.25rem;
+  left: -0.25rem;
+  transition: all 0.3s ease-in-out;
+}
+
+#toogleA:checked ~ .toggle__dot {
+  transform: translateX(100%);
+  background-color: #000;
 }

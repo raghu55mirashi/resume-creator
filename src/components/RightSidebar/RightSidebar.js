@@ -30,15 +30,16 @@ class RightSidebar extends Component {
     //     window.open('https://github.com/raghu55mirashi/resume-creator', '_blank')
     // }
     render() {
-        const { template } = this.props.switchResume
+        const { template, theme } = this.props.switchResume
         return (
             <div className="left-right-container shadow-2xl lg:w-64 xl:w-64 md:w-full">
-                <div className="bg-gray-300 rounded shadow flex-wrap ">
-                    <div className="text-center z-50 pb-3 pt-1 bg-gray-300 text-blue-500 sticky top-0">
+                <div className="rounded shadow flex-wrap ">
+                    <div className={`text-center z-50 pb-3 pt-1 text-blue-500 sticky top-0`} style={{ background: theme ? '#ced4db' : '#18191a' }}>
                         <button onClick={() => this.onLoad('basic')}
                             className={`${template === 'basic' ? 'border' : 'border-none'}  mx-1 border-solid border-white rounded-sm w-20`}>Basic</button>
                         <button onClick={() => this.onLoad('pro')}
                             className={`${template === 'pro' ? 'border' : 'border-none'}  mx-1 border-solid border-white rounded-sm w-20`}>Pro</button>
+
                     </div>
 
                     {template === 'basic' && <BasicTemp />}

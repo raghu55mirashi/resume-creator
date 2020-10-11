@@ -1,12 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const FormInput = ({ type, section = '', label = "", name, placeholder, value, onHandleChange, extraButton = false, appendButton, removeButton }) => {
+const FormInput = ({ type, section = '', label = "", name, placeholder, value, onHandleChange, extraButton = false, appendButton, removeButton, theme }) => {
     const UpdatedPlaceholder = placeholder.charAt(0).toUpperCase() + placeholder.slice(1).split('_').join(' ')
     return (
         <label className="block pl-1 pr-1">
-            <div className="text-gray-500 capitalize block">{label.split('_').join(' ')}</div>
+            <div className="capitalize block" style={{ color: `${theme ? '#a09e9e' : '#49494a'}` }}>{label.split('_').join(' ')}</div>
             <input type={type}
-                style={{ width: `${extraButton ? "85%" : "100%"}` }}
+                style={{ width: `${extraButton ? "85%" : "100%"}`, backgroundColor: `${theme ? '#fff' : '#49494a'}`, color: `${theme ? '#000' : '#a9a7a7'}` }}
                 className="form-input mt-1 rounded-sm p-1 mb-2"
                 onChange={onHandleChange}
                 placeholder={UpdatedPlaceholder}
@@ -22,5 +23,7 @@ const FormInput = ({ type, section = '', label = "", name, placeholder, value, o
         </label>
     )
 }
-
-export default FormInput
+const mapStateToProps = ({ switchResume }) => ({
+    theme: switchResume.theme
+})
+export default connect(mapStateToProps)(FormInput)
