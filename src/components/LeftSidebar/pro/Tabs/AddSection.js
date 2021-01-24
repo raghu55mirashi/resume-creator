@@ -37,7 +37,7 @@ class AddMoreSection extends Component {
     appendSection = () => {
         let newInputs = `section-${uuid()}`
         this.setState({
-            add_section: { ...this.state.add_section, [newInputs]: { section_name: '', description: '' } }
+            add_section: { ...this.state.add_section, [newInputs]: { section_name: '', description_0: '' } }
         })
     }
     appendDescription = (sectionKey) => {

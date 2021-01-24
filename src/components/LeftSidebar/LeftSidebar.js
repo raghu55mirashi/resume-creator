@@ -53,7 +53,7 @@ class LeftSidebar extends Component {
                                 className="flex items-center fixed-bottom cursor-pointer justify-center">
                                 <i className="fa fa-lg fa-moon-o" aria-hidden="true"></i><p className="pr-4 pl-2">Dark Theme</p>
                                 <div className="relative">
-                                    <input id="toogleA" onClick={() => this.props.changeTheme()} type="checkbox" className="hidden" />
+                                    <input id="toogleA" onClick={() => this.props.changeTheme()} type="checkbox" className="hidden" defaultChecked={!theme} />
                                     <div className="toggle__line w-6 h-2 bg-gray-400 rounded-full shadow-inner"></div>
                                     <div className="toggle__dot absolute w-4 h-4 bg-white rounded-full shadow inset-y-0 left-0"></div>
                                 </div>
