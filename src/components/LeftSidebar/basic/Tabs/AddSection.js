@@ -13,6 +13,9 @@ class AddMoreSection extends Component {
     state = {
         add_section: this.props.add_section
     }
+    
+    toastId = React.createRef(null);
+
     onChangeAddSection = (e, key) => {
         const { value } = e.target
         this.setState({
@@ -83,13 +86,20 @@ class AddMoreSection extends Component {
             const value = this.state[key]
             this.props.addData({ section: key, value })
             if (en) {
-                toast.success(`${[key]} added.`, {
-                    bodyClassName: 'text-center text-black-800 py-1',
-                });
+                this.toastId.current = toast.success(`${[key]} added.`, { 
+                    autoClose: 5000,
+                    type: toast.TYPE.INFO,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    theme: "colored"
+                 });
             } else {
-                toast.error(`${[key]} removed.`, {
-                    bodyClassName: 'text-center text-black-800 py-1',
-                });
+                this.toastId.current = toast.error(`${[key]} removed.`, { 
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    theme: "dark"
+                 });
             }
 
         })

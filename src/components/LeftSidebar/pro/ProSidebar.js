@@ -30,22 +30,23 @@ class ProSidebar extends Component {
         }
     }
     render() {
+        const {show} = this.state;
         return (
             <React.Fragment>
-                <Profile show={this.state.show} toggle={this.toggle} />
-                <Qualification show={this.state.show} toggle={this.toggle} />
-                <Experience show={this.state.show} toggle={this.toggle} />
-                <Projects show={this.state.show} toggle={this.toggle} />
-                <Contact show={this.state.show} toggle={this.toggle} />
-                <Skills show={this.state.show} toggle={this.toggle} />
-                <Summary show={this.state.show} toggle={this.toggle} />
-                <Objective show={this.state.show} toggle={this.toggle} />
-                <Address show={this.state.show} toggle={this.toggle} />
-                <Certification show={this.state.show} toggle={this.toggle} />
-                <References show={this.state.show} toggle={this.toggle} />
-                <Hobbies show={this.state.show} toggle={this.toggle} />
-                <SetImage show={this.state.show} toggle={this.toggle} />
-                <AddSection show={this.state.show} toggle={this.toggle} />
+                <Profile show={show} toggle={this.toggle} />
+                <Qualification show={show} toggle={this.toggle} />
+                <Experience show={show} toggle={this.toggle} />
+                <Projects show={show} toggle={this.toggle} />
+                <Contact show={show} toggle={this.toggle} />
+                <Skills show={show} toggle={this.toggle} />
+                <Summary show={show} toggle={this.toggle} />
+                <Objective show={show} toggle={this.toggle} />
+                <Address show={show} toggle={this.toggle} />
+                <Certification show={show} toggle={this.toggle} />
+                <References show={show} toggle={this.toggle} />
+                <Hobbies show={show} toggle={this.toggle} />
+                <SetImage show={show} toggle={this.toggle} />
+                <AddSection show={show} toggle={this.toggle} />
             </React.Fragment>
         )
     }

@@ -6,7 +6,7 @@ const FormInput = ({ section = '', label = "", name, placeholder, value, onHandl
     return (
         <label className="block pl-1 pr-1">
             <div className="capitalize block" style={{ color: `${theme ? '#a09e9e' : '#49494a'}` }}>{label.split('_').join(' ')}</div>
-            {name == 'duties' || name == 'description' || name == 'soft_skills' || name == 'tools-technologies' || name == 'frameworks-libraries' || name == 'programming_languages' ?
+            {name === 'duties' || name === 'description' || name === 'soft_skills' || name === 'tools-technologies' || name === 'frameworks-libraries' || name === 'programming_languages' ?
                 <textarea
                     style={{ width: `${extraButton ? "85%" : "100%"}`, backgroundColor: `${theme ? '#fff' : '#49494a'}`, color: `${theme ? '#000' : '#a9a7a7'}` }}
                     className="form-input mt-1 rounded-sm p-1 mb-2"

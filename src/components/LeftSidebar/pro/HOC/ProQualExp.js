@@ -14,6 +14,9 @@ export default function ProQualExp(WrappedComponent, componentName, enable = fal
         state = {
             [componentName]: this.props[componentName]
         }
+
+        toastId = React.createRef(null);
+
         onHandleChange = (e, key) => {
             const { name, value } = e.target
             this.setState({
@@ -64,13 +67,20 @@ export default function ProQualExp(WrappedComponent, componentName, enable = fal
                 const value = this.state[key]
                 this.props.addDataPro({ section: key, value })
                 if (en) {
-                    toast.success(`${[key]} added.`, {
-                        bodyClassName: 'text-center text-black-800 py-1',
-                    });
+                    this.toastId.current = toast.success(`${[key]} added.`, { 
+                        autoClose: 5000,
+                        type: toast.TYPE.INFO,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        theme: "colored"
+                     });                    
                 } else {
-                    toast.error(`${[key]} removed.`, {
-                        bodyClassName: 'text-center text-black-800 py-1',
-                    });
+                    this.toastId.current = toast.error(`${[key]} removed.`, { 
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    theme: "dark"
+                 });
                 }
 
             })
