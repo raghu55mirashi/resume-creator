@@ -6,7 +6,7 @@ import ProSidebar from './pro/ProSidebar'
 import { changeTemp, changeTheme } from '../../redux/switchReducer'
 import RightBoxes from '../Shared/RightBoxes'
 
-class LeftSidebar extends Component {
+class LeftSidebar extends Component { 
     state = {
         template: this.props.switchResume.template,
         size: ''
