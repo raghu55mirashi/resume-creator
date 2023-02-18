@@ -30,12 +30,16 @@ export default function ProQualExp(WrappedComponent, componentName, enable = fal
             let newInputs = `item-${uuid()}`
             var data;
             const myState = this.state[componentName];
-            let findKey = Object.keys(myState).find(i => i.startsWith('item'));
-            let tempVar = { ...myState[findKey] }
-            for (let key in tempVar) {
-                tempVar[key] = '';
+            if (componentName === 'references') {
+                data = { name: '', phone: '', email: '' }
+            }else{
+                let findKey = Object.keys(myState).find(i => i.startsWith('item'));
+                let tempVar = { ...myState[findKey] }
+                for (let key in tempVar) {
+                    tempVar[key] = '';
+                }
+                data = tempVar;
             }
-            data = tempVar;
 
             this.setState({
                 [componentName]: { ...this.state[componentName], [newInputs]: data }
