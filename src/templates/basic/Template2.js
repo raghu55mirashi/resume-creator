@@ -66,12 +66,12 @@ const Contact = ({ contact, image, name }) => {
             <div className="flex-1 py-10 text-center pt-2">
                 <span className="text-base block uppercase"><b>{name}</b></span>
                 {(contact.email).trim() !== '' && <span className="text-xs block"><b>Email:</b> {contact.email}</span>}
-                {(contact.cell).trim() !== '' && <span className="text-xs block"><b>Moblile No:</b> {contact.cell}</span>}
+                {(contact.phone).trim() !== '' && <span className="text-xs block"><b>Moblile No:</b> {contact.phone}</span>}
                 <div className="curriculum font-bold lg:text-lg pt-8">CURRICULUM VITAE</div>
             </div>
             <div className="flex-1 overflow-hidden">
                 <div className="flex justify-center lg:h-40 sm:h-24">
-                    {image.enable && <img src={img} alt="pic" id="photo" className="h-40 w-40  rounded-full object-center" />}
+                    {image.enable && <img src={img} alt="pic" id="photo" style={{objectFit: "cover"}} className="h-40 w-40  rounded-full object-center" />}
                 </div>
             </div>
         </div>

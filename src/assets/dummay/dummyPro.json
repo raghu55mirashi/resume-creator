@@ -15,7 +15,7 @@
   },
   "address": "Hno:777, At:ABC, Pune, Maharashtra, India",
   "contact": {
-    "cell": "545454545",
+    "phone": "54545454511",
     "email": "demo@gmail.com",
     "website": "test.github.io",
     "github": "github.com/demo",
@@ -23,8 +23,8 @@
   },
   "skills": {
     "programming_languages": "javascript, python, php",
-    "frameworks-libraries": "react, django, codeIgniter",
-    "tools-technologies": "git, aws, Linux",
+    "frameworks/libraries": "react, django, codeIgniter",
+    "tools/technologies": "git, aws, Linux",
     "soft_skills": "team player, self learner"
   },
   "qualification": {
@@ -79,6 +79,7 @@
       "project_name": "Nebhub",
       "company": "ABC pvt ltd",
       "duration": "2019-2020",
+      "tech_stack": "ReactJs, NodeJs",
       "place": "pune",
       "team_size": "6",
       "role": "frontend developer",
@@ -88,6 +89,7 @@
       "project_name": "Nebhub",
       "company": "XYZ pvt ltd",
       "duration": "2019-2020",
+      "tech_stack": "ReactJs, NodeJs",
       "place": "pune",
       "team_size": "6",
       "role": "backend developer",

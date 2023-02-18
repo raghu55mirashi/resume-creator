@@ -29,18 +29,14 @@ export default function ProQualExp(WrappedComponent, componentName, enable = fal
         appendSection = () => {
             let newInputs = `item-${uuid()}`
             var data;
-            if (componentName === 'qualification') {
-                data = { degree: '', university: '', duration: '', percentage: '', place: '' }
+            const myState = this.state[componentName];
+            let findKey = Object.keys(myState).find(i => i.startsWith('item'));
+            let tempVar = { ...myState[findKey] }
+            for (let key in tempVar) {
+                tempVar[key] = '';
             }
-            if (componentName === 'experience') {
-                data = { designation: '', company: '', duration: '', place: '', tools_tech: '', duties: '' }
-            }
-            if (componentName === 'projects') {
-                data = { project_name: '', company: '', duration: '', place: '', team_size: '', role: '', description: '' }
-            }
-            if (componentName === 'references') {
-                data = { name: '', phone: '', email: '' }
-            }
+            data = tempVar;
+
             this.setState({
                 [componentName]: { ...this.state[componentName], [newInputs]: data }
             })
@@ -67,27 +63,26 @@ export default function ProQualExp(WrappedComponent, componentName, enable = fal
                 const value = this.state[key]
                 this.props.addDataPro({ section: key, value })
                 if (en) {
-                    this.toastId.current = toast.success(`${[key]} added.`, { 
+                    this.toastId.current = toast.success(`${[key]} added.`, {
                         autoClose: 5000,
                         type: toast.TYPE.INFO,
                         hideProgressBar: false,
                         closeOnClick: true,
                         theme: "colored"
-                     });                    
+                    });
                 } else {
-                    this.toastId.current = toast.error(`${[key]} removed.`, { 
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    theme: "dark"
-                 });
+                    this.toastId.current = toast.error(`${[key]} removed.`, {
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        theme: "dark"
+                    });
                 }
 
             })
         }
         render() {
-            const myState = this.state[componentName]
-
+            const myState = this.state[componentName];
             return (
                 <WrappedComponent>
                     <Header label={componentName} onclick={e => this.props.toggle(e, componentName)} />
@@ -100,7 +95,6 @@ export default function ProQualExp(WrappedComponent, componentName, enable = fal
                                         <button onClick={e => this.removeSection(e, key1)} className="transition float-right ease-in duration-700 px-2 py-0 inline border border-white border-solid rounded-sm bg-red-600 hover:text-white hover:bg-black" >X</button>
                                         {Object.entries(value).map(([key2, val]) => (
                                             <span key={key2}>
-
                                                 <h4 className="pl-2 text-gray-500 capitalize">{key2.charAt(0).toUpperCase() + key2.slice(1).split('_').join(' ')}</h4>
                                                 <FormInput type="text"
                                                     name={key2} onHandleChange={e => this.onHandleChange(e, key1)}

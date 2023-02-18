@@ -19,15 +19,9 @@ class ProSidebar extends Component {
         show: ''
     }
     toggle = (e, arg) => {
-        if (this.state.show === arg) {
-            this.setState({
-                show: ''
-            })
-        } else {
-            this.setState({
-                show: arg
-            })
-        }
+        this.setState({
+            show: this.state.show === arg ? '' : arg
+        });
     }
     render() {
         const {show} = this.state;

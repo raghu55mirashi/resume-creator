@@ -19,7 +19,7 @@ export default function OtherHoc(WrappedComponent, componentName) {
             })
         }
         render() {
-            const data = this.state[componentName]
+            const data = this.state[componentName];
             return (
                 <WrappedComponent>
                     <Header label={componentName} onclick={e => this.props.toggle(e, componentName)} />

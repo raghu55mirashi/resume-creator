@@ -37,11 +37,11 @@ const Profile = ({ profile, contact }) => {
                             <td className="pr-12 pl-12 align-top pt-2">:</td>
                             <td className="pt-2 align-top capitalize">{contact.email}</td>
                         </tr>}
-                    {(contact.cell).trim() !== '' &&
+                    {(contact.phone).trim() !== '' &&
                         <tr>
                             <td className="align-top pt-2 capitalize">Mobile No</td>
                             <td className="pr-12 pl-12 align-top pt-2">:</td>
-                            <td className="pt-2 align-top capitalize">{contact.cell}</td>
+                            <td className="pt-2 align-top capitalize">{contact.phone}</td>
                         </tr>}
                 </tbody>
             </table>
@@ -80,7 +80,7 @@ const Contact = ({ image }) => {
             </div>
             <div className="flex-1 overflow-hidden">
                 <div className="flex justify-center lg:h-40 sm:h-24">
-                    {image.enable && <img src={img} alt="pic" id="photo" className="h-40 w-40  rounded-full object-center" />}
+                    {image.enable && <img src={img} alt="pic" id="photo" style={{objectFit: "cover"}} className="h-40 w-40  rounded-full object-center" />}
                 </div>
             </div>
         </div>

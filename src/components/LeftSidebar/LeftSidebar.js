@@ -6,10 +6,11 @@ import ProSidebar from './pro/ProSidebar'
 import { changeTemp, changeTheme } from '../../redux/switchReducer'
 import RightBoxes from '../Shared/RightBoxes'
 
-class LeftSidebar extends Component { 
+class LeftSidebar extends Component {
     state = {
         template: this.props.switchResume.template,
-        size: ''
+        size: '',
+        draggableDisabled: false
     }
     onLoad = type => {
         this.setState({ template: type }, () => {
@@ -20,6 +21,7 @@ class LeftSidebar extends Component {
     componentDidMount() {
         this.setState({ size: window.innerWidth })
     }
+
     render() {
         const { template, theme } = this.props.switchResume
         const { size } = this.state
@@ -35,6 +37,7 @@ class LeftSidebar extends Component {
                     position={null}
                     grid={[1, 1]}
                     scale={1}
+                    disabled={this.state.draggableDisabled}
                 >
                     <div className={`${myclass} z-50 lg:cursor-move rounded shadow flex-wrap sticky top-0`} >
                         <div className={`text-center pb-2 pt-1 text-blue-500 sticky top-0 `} style={{ background: theme ? '#ced4db' : '#18191a' }}>
@@ -43,11 +46,12 @@ class LeftSidebar extends Component {
                             <button onClick={() => this.onLoad('pro')}
                                 className={`${template === 'pro' ? 'border' : 'border-none'}  mx-1 border-solid border-white rounded-sm w-20`}>Pro</button>
                         </div>
-
-                        <div className="rounded overflow-auto mb-1 " style={{ height: `${template === 'pro' ? '77vh' : '54.5vh'}`, background: theme ? '#e2e8f0' : '#242526' }}>
-                            {template === 'basic' && <BasicSidebar />}
-                            {template === 'pro' && <ProSidebar />}
-                        </div>
+                        <Draggable disabled={true}>
+                            <div tabIndex={-1} onBlur={() => this.setState({ draggableDisabled: false })} onClick={() => this.setState({ draggableDisabled: true })} className="rounded overflow-auto mb-1 " style={{ height: `${template === 'pro' ? '77vh' : '54.5vh'}`, background: theme ? '#e2e8f0' : '#242526' }}>
+                                {template === 'basic' && <BasicSidebar />}
+                                {template === 'pro' && <ProSidebar />}
+                            </div>
+                        </Draggable>
                         <RightBoxes>
                             <label htmlFor="toogleA"
                                 className="flex items-center fixed-bottom cursor-pointer justify-center">
@@ -61,8 +65,6 @@ class LeftSidebar extends Component {
                         </RightBoxes>
                     </div>
                 </Draggable>
-
-
             </div>
         )
     }

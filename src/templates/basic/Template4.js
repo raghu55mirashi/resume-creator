@@ -8,13 +8,13 @@ const Contact = ({ contact, image, name }) => {
         <div className="flex">
             <div className="flex-1 overflow-hidden">
                 <div className="flex justify-center lg:h-40 sm:h-24">
-                    {image.enable && <img src={img} alt="pic" id="photo" className="h-40 w-40  rounded-full object-center" />}
+                    {image.enable && <img src={img} alt="pic" id="photo" style={{objectFit: "cover"}} className="h-40 w-40  rounded-full object-center" />}
                 </div>
             </div>
             <div className=" flex-auto pt-12 text-center">
                 <span className="curriculum font-bold lg:text-lg uppercase">{name}</span>
                 {(contact.email).trim() !== '' && <span className="text-xs block"><b>Email:</b> {contact.email}</span>}
-                {(contact.cell).trim() !== '' && <span className="text-xs block pb-8"><b>Moblile No:</b> {contact.cell}</span>}
+                {(contact.phone).trim() !== '' && <span className="text-xs block pb-8"><b>Moblile No:</b> {contact.phone}</span>}
             </div>
             <div className="flex-1">
             </div>

@@ -8,7 +8,7 @@ const Contact = ({ contact, profile }) => {
             <div className=" flex-auto">
                 <div className="pt-3">
                     <div className="float-right text-right">
-                        {(contact.cell).trim() !== '' && <span className="text-xs block">{contact.cell}<i className="fa fa-phone pl-1"></i></span>}
+                        {(contact.phone).trim() !== '' && <span className="text-xs block">{contact.phone}<i className="fa fa-phone pl-1"></i></span>}
                         {(contact.email).trim() !== '' && <span className="text-xs block">{contact.email}<i className="fa fa-at pl-1"></i></span>}
                         {(contact.website).trim() !== '' && <span className="text-xs block">{contact.website}<i className="fa fa-link pl-1" aria-hidden="true"></i></span>}
                         {(profile.current_location).trim() !== '' && <span className="text-xs block capitalize pl-1">{profile.current_location}<i className="fa fa-map-marker pl-2"></i></span>}
@@ -23,7 +23,7 @@ const Image = ({ image }) => {
     return (
         <div className="flex-auto overflow-hidden ">
             <div className=" text-center lg:h-40 sm:h-24 pt-5 pl-1">
-                {image.enable && <img src={img} alt="pic" id="photo" className="h-32 w-32  rounded-full object-center" />}
+                {image.enable && <img src={img} alt="pic" id="photo" style={{objectFit: "cover"}} className="h-32 w-32  rounded-full object-center" />}
             </div>
         </div>
     )
@@ -126,6 +126,14 @@ const Projects = ({ projects }) => {
                                                     </span>}
                                             </div>
                                         </li>}
+                                    <li>
+                                        <div className="text-sm ">{(projects[key1]['tech_stack']).trim() !== '' &&
+                                            <span>
+                                                <span className="font-medium">Tech Stack: </span>
+                                                <span >{projects[key1]['tech_stack']}</span>
+                                            </span>}
+                                        </div>
+                                    </li>
                                     {(projects[key1].description).trim() !== '' &&
                                         <li>
                                             <span className=" normal-case text-sm">{projects[key1].description}</span>
