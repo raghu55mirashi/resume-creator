@@ -224,9 +224,9 @@ const References = ({ references }) => {
                 Object.keys(references).map((key1, value1) => (
                     key1 !== "enable" ?
                         <div key={key1} className={`${(Object.keys(references).lastIndexOf(key1) !== Object.keys(references).length - 1) ? 'border-dashed border-gray-600 border-b' : ''} pt-2 pb-4 capitalize`}>
-                            {(references[key1].name).trim() !== '' && <h4 className=" font-semibold pl-4">{references[key1].name}</h4>}
-                            {(references[key1].phone).trim() !== '' && <h5 className=" text-sm"><i className="fa fa-phone"></i>{' '}{references[key1].phone}</h5>}
-                            {(references[key1].email).trim() !== '' && <h5 className=" lowercase  text-sm">@{' '}{references[key1].email}</h5>}
+                            {(references[key1].name)?.trim() !== '' && <h4 className=" font-semibold pl-4">{references[key1].name}</h4>}
+                            {(references[key1].phone)?.trim() !== '' && <h5 className=" text-sm"><i className="fa fa-phone"></i>{' '}{references[key1].phone}</h5>}
+                            {(references[key1].email)?.trim() !== '' && <h5 className=" lowercase  text-sm">@{' '}{references[key1].email}</h5>}
 
                         </div> : null
                 ))
