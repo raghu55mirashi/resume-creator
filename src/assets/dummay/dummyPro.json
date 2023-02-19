@@ -105,7 +105,8 @@
   "hobbies": {
     "enable": true,
     "description": {
-      "description-0": "Watching News"
+      "description-0": "Watching News",
+      "description-1": "Exploring new places"
     }
   },
   "add_section": {
