@@ -48,7 +48,7 @@ const Skills = ({ skills }) => {
                             <h4 className=" font-normal pb-2 text-center">{skill.split('_').join(' ')}</h4>
 
                             {skills[skill].split(',').map(k => (
-                                <span key={k} className="mr-1 mb-1 text-sm font-semibold w-auto bg-gray-700 px-2 text-white rounded inline-block">{k}</span>
+                                <span key={k} className="mr-1 mb-1 text-sm font-semibold w-auto bg-gray-600 px-2 text-white rounded inline-block">{k}</span>
                             ))}
                         </div>}
                 </span>
