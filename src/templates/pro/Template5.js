@@ -70,7 +70,7 @@ const Experience = ({ experience }) => {
         <div className="pt-8">
             <div className="title font-bold uppercase bg-gray-200 block pl-2">Experience</div>
             {
-                Object.keys(experience).map((key1, value1) => (
+                Object.keys(experience).reverse().map((key1, value1) => (
                     key1 !== "enable" ?
                         <div key={key1} className={`${(Object.keys(experience).lastIndexOf(key1) !== Object.keys(experience).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pl-2 pt-2 capitalize`}>
                             <div className="grid grid-cols-8">
@@ -115,7 +115,7 @@ const Projects = ({ projects }) => {
         <div className="pt-8">
             <div className="title font-bold uppercase bg-gray-200 block pl-2">projects</div>
             {
-                Object.keys(projects).map((key1, value1) => (
+                Object.keys(projects).reverse().map((key1, value1) => (
                     key1 !== "enable" ?
                         <div key={key1} className={`${(Object.keys(projects).lastIndexOf(key1) !== Object.keys(projects).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pl-2 pt-2 capitalize`}>
                             <div className="grid grid-cols-8">

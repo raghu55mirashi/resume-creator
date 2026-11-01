@@ -61,7 +61,7 @@ const Experience = ({ experience }) => {
         <div className="pt-8">
             <div className="title font-bold uppercase border-solid border-gray-600 border-b block">Experience</div>
             {
-                Object.keys(experience).map((key1, value1) => (
+                Object.keys(experience).reverse().map((key1, value1) => (
                     key1 !== "enable" ?
                         <div key={key1} className={`${(Object.keys(experience).lastIndexOf(key1) !== Object.keys(experience).length - 1) ? 'border-dashed border-gray-600 border-b pb-4 ' : ''} pt-2 capitalize`}>
                             {(experience[key1].designation).trim() !== '' && <h4 className=" font-normal">{experience[key1].designation}</h4>}
@@ -95,7 +95,7 @@ const Projects = ({ projects }) => {
         <div className="pt-8">
             <div className="title font-bold uppercase border-solid border-gray-600 border-b block">projects</div>
             {
-                Object.keys(projects).map((key1, value1) => (
+                Object.keys(projects).reverse().map((key1, value1) => (
                     key1 !== "enable" ?
                         <div key={key1} className={`${(Object.keys(projects).lastIndexOf(key1) !== Object.keys(projects).length - 1) ? 'border-dashed border-gray-600 border-b  pb-4 ' : ''} pt-2 capitalize`}>
                             {(projects[key1].project_name).trim() !== '' && <h4 className=" font-normal">{projects[key1].project_name}</h4>}
