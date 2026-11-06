@@ -42,14 +42,16 @@ const Summary = ({ summary, profile }) => {
     )
 }
 const Skills = ({ skills }) => {
+    const skillKeys = Object.keys(skills)
+
     return (
         <div className="pt-6">
             <div className="title font-bold uppercase block pl-2">skills</div>
 
-            {Object.keys(skills).map((skill, id) => (
+            {skillKeys.map((skill, id) => (
                 <span key={id}>
                     {(skills[skill].trim()).length > 1 &&
-                        <div className={`${(Object.keys(skills).lastIndexOf(skill) !== Object.keys(skills).length - 1) ? 'border-dashed border-gray-600 border-b' : ''} capitalize pl-2 py-2`}>
+                        <div className={`${(skillKeys.lastIndexOf(skill) !== skillKeys.length - 1) ? 'border-dashed border-gray-600 border-b' : ''} capitalize pl-2 py-2`}>
                             <h4 className=" font-normal pb-2">{skill.split('_').join(' ')}</h4>
 
                             {skills[skill].split(',').map(k => (
@@ -62,13 +64,15 @@ const Skills = ({ skills }) => {
     )
 }
 const Experience = ({ experience }) => {
+    const experienceKeys = Object.keys(experience)
+
     return (
         <div className="pt-4">
             <div className="title font-bold uppercase block pl-2">Experience</div>
             {
-                Object.keys(experience).reverse().map((key1, value1) => (
+                experienceKeys.slice().reverse().map((key1, index) => (
                     key1 !== "enable" ?
-                        <div key={key1} className={`${(Object.keys(experience).lastIndexOf(key1) !== Object.keys(experience).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pl-2 pt-2 capitalize`}>
+                        <div key={key1} className={`${(index !== experienceKeys.length - 2) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pl-2 pt-2 capitalize`}>
                             {(experience[key1].designation).trim() !== '' && <h4 className=" font-normal">{experience[key1].designation}</h4>}
                             {(experience[key1].company).trim() !== '' && <span className=" font-semibold text-sm">{experience[key1].company}</span>}
                             <div className="text-xs">
@@ -96,13 +100,15 @@ const Experience = ({ experience }) => {
     )
 }
 const Projects = ({ projects }) => {
+    const projectKeys = Object.keys(projects)
+
     return (
         <div className="pt-8">
             <div className="title font-bold uppercase block pl-2">projects</div>
             {
-                Object.keys(projects).reverse().map((key1, value1) => (
+                projectKeys.slice().reverse().map((key1, index) => (
                     key1 !== "enable" ?
-                        <div key={key1} className={`${(Object.keys(projects).lastIndexOf(key1) !== Object.keys(projects).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pl-2 pt-2 capitalize`}>
+                        <div key={key1} className={`${(index !== projectKeys.length - 2) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pl-2 pt-2 capitalize`}>
                             {(projects[key1].project_name).trim() !== '' && <h4 className=" font-normal">{projects[key1].project_name}</h4>}
                             {(projects[key1].company).trim() !== '' && <span className=" font-semibold text-sm">{projects[key1].company}</span>}
                             <div className="text-xs">
@@ -147,12 +153,14 @@ const Projects = ({ projects }) => {
     )
 }
 const Qualification = ({ qualification }) => {
+    const qualificationKeys = Object.keys(qualification)
+
     return (
         <div className="pt-4">
             <div className="title font-bold uppercase block pl-2">qualification</div>
             {
-                Object.keys(qualification).map((key1, value1) => (
-                    <div key={key1} className={`${(Object.keys(qualification).lastIndexOf(key1) !== Object.keys(qualification).length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pl-2 pt-2 capitalize`}>
+                qualificationKeys.map((key1, value1) => (
+                    <div key={key1} className={`${(qualificationKeys.lastIndexOf(key1) !== qualificationKeys.length - 1) ? 'border-dashed border-gray-600 border-b pb-4' : ''} pl-2 pt-2 capitalize`}>
                         {(qualification[key1].degree).trim() !== '' && <h4 className=" font-normal">{qualification[key1].degree}</h4>}
                         {(qualification[key1].university).trim() !== '' && <span className=" font-semibold text-sm">{qualification[key1].university}</span>}
                         <div className="text-xs">
@@ -222,13 +230,15 @@ const Certification = ({ certification }) => {
     )
 }
 const References = ({ references }) => {
+    const referenceKeys = Object.keys(references)
+
     return (
         <div className="pt-8">
             <div className="title font-bold uppercase block pl-2">References</div>
             {
-                Object.keys(references).map((key1, value1) => (
+                referenceKeys.map((key1, index) => (
                     key1 !== "enable" ?
-                        <div key={key1} className={`${(Object.keys(references).lastIndexOf(key1) !== Object.keys(references).length - 1) ? 'border-dashed border-gray-600 border-b' : ''} pl-2 pt-2 pb-4 capitalize`}>
+                        <div key={key1} className={`${(index !== referenceKeys.length - 1) ? 'border-dashed border-gray-600 border-b' : ''} pl-2 pt-2 pb-4 capitalize`}>
                             {(references[key1].name)?.trim() !== '' && <h4 className=" font-semibold pl-4">{references[key1].name}</h4>}
                             {(references[key1].phone)?.trim() !== '' && <h5 className=" text-sm"><i className="fa fa-phone"></i>{' '}{references[key1].phone}</h5>}
                             {(references[key1].email)?.trim() !== '' && <h5 className=" lowercase  text-sm">@{' '}{references[key1].email}</h5>}
@@ -283,41 +293,40 @@ const AddSections = ({ add_section }) => {
 }
 
 
-class Template6 extends React.Component {
-    render() {
-        const { contact, summary, profile, projects, address, qualification, image,
-            skills, experience, certification, references, hobbies, add_section } = this.props.proResume
-        return (
-            <React.Fragment>
-                <div className="grid grid-cols-5 px-8 pb-px pt-8 border-b-2 border-solid border-gray-600">
-                    <div className="col-span-2">
-                        <Summary summary={summary} profile={profile} />
-                    </div>
-                    <div className="col-span-1">
-                        <Image image={image} />
-                    </div>
-                    <div className="col-span-2">
-                        <Contact contact={contact} profile={profile} />
-                    </div>
+const Template6 = ({ proResume }) => {
+    const { contact, summary, profile, projects, address, qualification, image,
+        skills, experience, certification, references, hobbies, add_section } = proResume
+
+    return (
+        <React.Fragment>
+            <div className="grid grid-cols-5 px-8 pb-px pt-8 border-b-2 border-solid border-gray-600">
+                <div className="col-span-2">
+                    <Summary summary={summary} profile={profile} />
                 </div>
-                <div className="flex w-full px-8 pb-8">
-                    <div className="w-6/12">
-                        <Experience experience={experience} />
-                        <Projects projects={projects} />
-                        {add_section.enable && <AddSections add_section={add_section} />}
-                        {references.enable && <References references={references} />}
-                    </div>
-                    <div className="w-6/12 pl-4">
-                        <Qualification qualification={qualification} />
-                        <Skills skills={skills} />
-                        {certification.enable && <Certification certification={certification} />}
-                        {hobbies.enable && <Hobbies hobbies={hobbies} />}
-                        <PersonalInfo profile={profile} address={address} contact={contact} />
-                    </div>
+                <div className="col-span-1">
+                    <Image image={image} />
                 </div>
-            </React.Fragment>
-        )
-    }
+                <div className="col-span-2">
+                    <Contact contact={contact} profile={profile} />
+                </div>
+            </div>
+            <div className="flex w-full px-8 pb-8">
+                <div className="w-6/12">
+                    <Experience experience={experience} />
+                    <Projects projects={projects} />
+                    {add_section.enable && <AddSections add_section={add_section} />}
+                    {references.enable && <References references={references} />}
+                </div>
+                <div className="w-6/12 pl-4">
+                    <Qualification qualification={qualification} />
+                    <Skills skills={skills} />
+                    {certification.enable && <Certification certification={certification} />}
+                    {hobbies.enable && <Hobbies hobbies={hobbies} />}
+                    <PersonalInfo profile={profile} address={address} contact={contact} />
+                </div>
+            </div>
+        </React.Fragment>
+    )
 }
 
 const mapStateToProps = ({ proResume }) => ({

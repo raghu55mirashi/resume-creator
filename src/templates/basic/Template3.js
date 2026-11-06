@@ -200,25 +200,24 @@ const Declaration = () => {
     )
 }
 
-class Template3 extends React.Component {
-    render() {
-        const { objective, profile, address, contact, qualification, image,
-            skills, experience, certification, add_section, declaration } = this.props.resume
-        return (
-            <div className="py-8 px-10">
-                <Contact image={image} />
-                <Objective objective={objective} />
-                <ProfileAndAddress contact={contact} profile={profile} address={address} />
-                <Qualification qualification={qualification} />
-                {experience.enable && <Experience experience={experience} />}
-                {skills.enable && <Skills skills={skills} />}
-                <Address address={address} />
-                {certification.enable && <Certification certification={certification} />}
-                {add_section.enable && <AddSections add_section={add_section} />}
-                <Declaration declaration={declaration} />
-            </div>
-        )
-    }
+const Template3 = ({ resume }) => {
+    const { objective, profile, address, contact, qualification, image,
+        skills, experience, certification, add_section, declaration } = resume
+
+    return (
+        <div className="py-8 px-10">
+            <Contact image={image} />
+            <Objective objective={objective} />
+            <ProfileAndAddress contact={contact} profile={profile} address={address} />
+            <Qualification qualification={qualification} />
+            {experience.enable && <Experience experience={experience} />}
+            {skills.enable && <Skills skills={skills} />}
+            <Address address={address} />
+            {certification.enable && <Certification certification={certification} />}
+            {add_section.enable && <AddSections add_section={add_section} />}
+            <Declaration declaration={declaration} />
+        </div>
+    )
 }
 
 const mapStateToProps = ({ resume }) => ({
