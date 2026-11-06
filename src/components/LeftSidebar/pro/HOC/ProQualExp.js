@@ -85,8 +85,29 @@ export default function ProQualExp(WrappedComponent, componentName, enable = fal
 
             })
         }
+        moveSection = (e, key, action) => {
+            const currentData = this.state[componentName];
+            const itemEntries = Object.entries(currentData).filter(([itemKey]) => itemKey !== 'enable');
+            const currentIndex = itemEntries.findIndex(([itemKey]) => itemKey === key);
+            const targetIndex = currentIndex + (action === 'up' ? -1 : action === 'down' ? 1 : 0);
+
+            if (currentIndex === -1 || targetIndex < 0 || targetIndex >= itemEntries.length || targetIndex === currentIndex) return;
+
+            [itemEntries[currentIndex], itemEntries[targetIndex]] = [itemEntries[targetIndex], itemEntries[currentIndex]];
+            const updatedInputs = Object.fromEntries(itemEntries);
+            if (Object.prototype.hasOwnProperty.call(currentData, 'enable')) {
+                updatedInputs.enable = currentData.enable;
+            }
+
+            this.setState({
+                [componentName]: updatedInputs
+            }, () => {
+                this.props.addDataPro({ section: componentName, value: this.state[componentName] });
+            });
+        }
         render() {
             const myState = this.state[componentName];
+            const itemCount = Object.keys(myState).filter(key => key !== 'enable').length;
             return (
                 <WrappedComponent>
                     <Header label={componentName} onclick={e => this.props.toggle(e, componentName)} />
@@ -97,6 +118,10 @@ export default function ProQualExp(WrappedComponent, componentName, enable = fal
                                 key1 !== 'enable' ?
                                     <div className=" border-b-2 pb-5 border-white border-solid" key={key1}>
                                         <button onClick={e => this.removeSection(e, key1)} className="transition float-right ease-in duration-700 px-2 py-0 inline border border-white border-solid rounded-sm bg-red-600 hover:text-white hover:bg-black" >X</button>
+                                        {itemCount > 1 && <>
+                                            <button onClick={e => this.moveSection(e, key1, "up")} title="Move up" aria-label="Move up" className="transition float-right ease-in duration-700 px-2 py-0 inline border border-white border-solid rounded-sm bg-blue-600 hover:text-white hover:bg-black" >↑</button>
+                                            <button onClick={e => this.moveSection(e, key1, "down")} title="Move down" aria-label="Move down" className="transition float-right ease-in duration-700 px-2 py-0 inline border border-white border-solid rounded-sm bg-blue-600 hover:text-white hover:bg-black" >↓</button>
+                                        </>}
                                         {Object.entries(value).map(([key2, val]) => (
                                             <span key={key2}>
                                                 <h4 className="pl-2 text-gray-500 capitalize">{key2.charAt(0).toUpperCase() + key2.slice(1).split('_').join(' ')}</h4>
